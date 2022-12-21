@@ -18,7 +18,6 @@ class Trainer:
         self.scheduler = scheduler
         self.eval_fns = [] if eval_fns is None else eval_fns
         self.diagnostics = dict()
-
         self.start_time = time.time()
 
     def train_iteration(self, num_steps, iter_num=0, plot_dict=dict(), print_logs=False):

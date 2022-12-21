@@ -22,6 +22,7 @@ class DecisionTransducer(TrajectoryModel):
             max_length=None,
             max_ep_len=4096,
             action_tanh=True,
+            bias_mode = 'b1',
             **kwargs
     ):
         super().__init__(state_dim, act_dim, max_length=max_length)
@@ -34,7 +35,10 @@ class DecisionTransducer(TrajectoryModel):
         # encoders for 3 modalities
         self.state_encoder = Encoder(hidden_size)
         self.action_encoder = Encoder(hidden_size)
-        self.rtg_encoder = Encoder(hidden_size)
+        self.bias_mode = bias_mode
+
+        if self.bias_mode != "b0":
+            self.rtg_encoder = Encoder(hidden_size)
 
         # join network with tanh out
         self.join = JoinNet(hidden_size)
@@ -56,6 +60,8 @@ class DecisionTransducer(TrajectoryModel):
             *([nn.Linear(hidden_size, self.act_dim)] + ([nn.Tanh()] if action_tanh else []))
         )
         self.predict_return = torch.nn.Linear(hidden_size, 1)
+
+
 
     def forward(self, states, actions, rewards, returns_to_go, timesteps, attention_mask=None):
 
@@ -83,11 +89,16 @@ class DecisionTransducer(TrajectoryModel):
         # encoding with causal mask
         encoded_state = self.state_encoder(state_embeddings, attention_mask)
         encoded_action = self.action_encoder(action_embeddings, attention_mask)
-        encoded_rtg = self.rtg_encoder(returns_embeddings, attention_mask)
+        if self.bias_mode != "b0":
+            encoded_rtg = self.rtg_encoder(returns_embeddings, attention_mask)
         
-        # combiner & biasing 
-        encoded_state = self.bias1(encoded_state, encoded_rtg, attention_mask)
-        encoded_action = self.bias2(encoded_action, encoded_rtg, attention_mask)
+        # combiner & biasing
+        if self.bias_mode == "b0":
+            pass
+        else:
+            encoded_state = self.bias1(encoded_state, encoded_rtg, attention_mask)
+            if self.bias_mode == "b2":
+                encoded_action = self.bias2(encoded_action, encoded_rtg, attention_mask)
         
         # join network
         join_encoded = self.join(encoded_state, encoded_action, attention_mask)

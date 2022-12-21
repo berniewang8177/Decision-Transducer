@@ -19,9 +19,15 @@ class BiasCombineNet(torch.nn.Module):
         self.norm3 = torch.nn.LayerNorm(hidden_size)
 
         self.attn = nn.MultiheadAttention(hidden_size, 1, batch_first=True)
+
+        self.w5 = nn.Linear(hidden_size, hidden_size)
+        self.w6 = nn.Linear(hidden_size, hidden_size)
     
     def forward(self, data, rtgs, pad_mask):
-
+        """
+        B1: cross attention. Query: state or action. Key/values: rtgs
+        C2.0: Treat the biased representation as a kind of embedding.
+        """
         attn_mask = get_lookahead_mask(rtgs)
         data_0 = data
         data_1, _ = self.attn(
@@ -31,9 +37,63 @@ class BiasCombineNet(torch.nn.Module):
             key_padding_mask = pad_mask,
             attn_mask = attn_mask
             )
-        fuse = torch.cat([data_0,data_1], dim = -1)
-        final = self.w3( fuse )
-        return final
+
+        fuse = self.w5(data_0) + self.w6( data_1 ) 
+        return fuse
+
+    # def forward(self, data, rtgs, pad_mask):
+    #     """
+    #     B1: cross attention. Query: state or action. Key/values: rtgs
+    #     C2.2: Treat the biased representation as a kind of embedding.
+    #     """
+    #     attn_mask = get_lookahead_mask(rtgs)
+    #     data_0 = data
+    #     data_1, _ = self.attn(
+    #         query = data,
+    #         key = rtgs,
+    #         value = rtgs,
+    #         key_padding_mask = pad_mask,
+    #         attn_mask = attn_mask
+    #         )
+    #     fuse = self.w1(data_0) + self.w2( data_1 ) 
+    #     final = self.w3( self.gelu(fuse) )
+    #     return final
+
+    # def forward(self, data, rtgs, pad_mask):
+    #     """
+    #     B1: cross attention. Query: state or action. Key/values: rtgs
+    #     C2.1: Treat the biased representation as a kind of embedding.
+    #     """
+    #     attn_mask = get_lookahead_mask(rtgs)
+    #     data_0 = data
+    #     data_1, _ = self.attn(
+    #         query = data,
+    #         key = rtgs,
+    #         value = rtgs,
+    #         key_padding_mask = pad_mask,
+    #         attn_mask = attn_mask
+    #         )
+    #     fuse = self.w1(data_0) + self.w2( data_1 ) 
+    #     final = self.w3( fuse )
+    #     return final
+    
+    # def forward(self, data, rtgs, pad_mask):
+    #     """
+    #     B1: cross attention. Query: state or action. Key/values: rtgs
+    #     C1: concate 2 representation and fuse to the original.
+    #     """
+    #     attn_mask = get_lookahead_mask(rtgs)
+    #     data_0 = data
+    #     data_1, _ = self.attn(
+    #         query = data,
+    #         key = rtgs,
+    #         value = rtgs,
+    #         key_padding_mask = pad_mask,
+    #         attn_mask = attn_mask
+    #         )
+    #     fuse = torch.cat([data_0,data_1], dim = -1)
+    #     final = self.w3( fuse )
+    #     return final
 
 
 

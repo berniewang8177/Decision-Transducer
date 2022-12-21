@@ -54,7 +54,8 @@ def experiment(
 
     env_name, dataset = variant['env'], variant['dataset']
     model_type = variant['model_type']
-    group_name = f'{exp_prefix}-{env_name}-{dataset}'
+    bias_mode = variant['bias']
+    group_name = f'{exp_prefix}-{env_name}-{dataset}' + f'-{bias_mode}'
     exp_prefix = f'{group_name}-{random.randint(int(1e5), int(1e6) - 1)}'
 
     if env_name == 'hopper':
@@ -282,12 +283,13 @@ def experiment(
             n_positions=1024,
             resid_pdrop=variant['dropout'],
             attn_pdrop=variant['dropout'],
+            bias_mode = bias_mode
         )
     else:
         raise NotImplementedError
 
     if variant['load_model'] != "NO":
-        load_path = os.path.join(".", "saved_model", variant['load_model'] )
+        load_path = os.path.join(".", "..", "..", "saved_model", variant['load_model'] )
         model.load_state_dict(torch.load(load_path, map_location=torch.device(device) ))
         print("Model Load Sucess!")
     
@@ -321,7 +323,6 @@ def experiment(
             eval_fns=[eval_episodes(tar) for tar in env_targets],
         )
 
-
     if log_to_wandb:
         wandb.init(
             name=exp_prefix,
@@ -347,7 +348,7 @@ def experiment(
                 best_rtgs[i] = rtg
                 # dump my progress
                 save_name = f"{env_name}_{dataset}_{model_targets[i]}_achieve_{int(rtg)}_warmup_{ int(variant['warmup_steps'])//1000}k_bias2"
-                SAVE_PATH = os.path.join(".", "saved_model" , save_name)
+                SAVE_PATH = os.path.join(".", "..", "..","saved_model" , save_name)
                 torch.save(model.state_dict(), SAVE_PATH)
 
 
@@ -376,10 +377,10 @@ if __name__ == '__main__':
     parser.add_argument('--load_model', type=str, default='NO')
     parser.add_argument('--save_model', type=str, default='NO')
     parser.add_argument('--seeds', type=str, default="0 1 2")
-
+    parser.add_argument('--bias', type=str, default="b1")
 
     parser.add_argument('--log_to_wandb', '-w', type=bool, default=False)
 
     args = parser.parse_args()
 
-    experiment('gym-b1-c1', variant=vars(args))
+    experiment('gym-b1-c2.0', variant=vars(args))
