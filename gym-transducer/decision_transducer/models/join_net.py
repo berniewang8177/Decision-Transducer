@@ -18,7 +18,7 @@ class JoinNet(torch.nn.Module):
         self.norm2 = torch.nn.LayerNorm(hidden_size)
         self.norm3 = torch.nn.LayerNorm(hidden_size)
 
-        self.attn = nn.MultiheadAttention(hidden_size, 1, batch_first=True)
+        # self.attn = nn.MultiheadAttention(hidden_size, 1, batch_first=True)
 
         self.join_enc = Encoder(hidden_size, n_layers = 1)
 
