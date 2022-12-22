@@ -350,5 +350,6 @@ if __name__ == '__main__':
     parser.add_argument('--log_to_wandb', '-w', type=bool, default=False)
 
     args = parser.parse_args()
+    b_mode = vars(args)['bias']
 
-    experiment('gym-b0-norm-test', variant=vars(args))
+    experiment(f'gym-{b_mode}-norm-test', variant=vars(args))
