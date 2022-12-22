@@ -22,7 +22,14 @@ class BiasCombineNet(torch.nn.Module):
 
         self.w5 = nn.Linear(hidden_size, hidden_size)
         self.w6 = nn.Linear(hidden_size, hidden_size)
+
+        self._init_params()
     
+    def _init_params(self):
+        for p in self.parameters():
+            if p.dim() > 1:
+                torch.nn.init.xavier_normal_(p)
+
     def forward(self, data, rtgs, pad_mask):
         """
         B1: cross attention. Query: state or action. Key/values: rtgs

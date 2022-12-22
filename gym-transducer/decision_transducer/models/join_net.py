@@ -1,32 +1,6 @@
 import torch
 import torch.nn as nn
-from decision_transducer.models.encoders import Encoder
-
-def get_lookahead_mask(padded_input):
-    """Creates a binary mask for each sequence which maskes future frames.
-    Arguments
-    ---------
-    padded_input: torch.Tensor
-        Padded input tensor.
-    Example
-    -------
-    >>> a = torch.LongTensor([[1,1,0], [2,3,0], [4,5,0]])
-    >>> get_lookahead_mask(a)
-    tensor([[0., -inf, -inf],
-            [0., 0., -inf],
-            [0., 0., 0.]])
-    """
-    seq_len = padded_input.shape[1]
-    mask = (
-        torch.triu(torch.ones((seq_len, seq_len), device=padded_input.device))
-        == 1
-    ).transpose(0, 1)
-    mask = (
-        mask.float()
-        .masked_fill(mask == 0, float("-inf"))
-        .masked_fill(mask == 1, float(0.0))
-    )
-    return mask.detach().to(padded_input.device)
+from decision_transducer.models.encoders import Encoder, get_lookahead_mask
 
 class JoinNet(torch.nn.Module):
 
@@ -47,21 +21,29 @@ class JoinNet(torch.nn.Module):
         self.attn = nn.MultiheadAttention(hidden_size, 1, batch_first=True)
 
         self.join_enc = Encoder(hidden_size, n_layers = 1)
+
+        self._init_params()
     
-    def forward(self, states, actions, pad_mask):
+    def _init_params(self):
+        for p in self.parameters():
+            if p.dim() > 1:
+                torch.nn.init.xavier_normal_(p)
+    
+    def forward(self, states, actions, pad_mask = None):
         batch_size, seq_length = states.shape[0], states.shape[1]
 
         stacked_inputs = torch.stack(
                 (states, actions), dim=1
             ).permute(0, 2, 1, 3).reshape(batch_size, 2*seq_length, self.hidden_size)
 
-    
         # to make the attention mask fit the stacked inputs, have to stack it as well
         stacked_pad_mask = torch.stack(
             (pad_mask, pad_mask), dim=1
             ).permute(0, 2, 1).reshape(batch_size, 2*seq_length)
-        
-        x = self.join_enc(stacked_inputs, stacked_pad_mask)
+
+        causal_mask = get_lookahead_mask(stacked_pad_mask )
+
+        x = self.join_enc(stacked_inputs, causal_mask, stacked_pad_mask)
         # the 0 dim is batch, 1 dim is state,action
         x = x.reshape(batch_size, seq_length, 2, self.hidden_size).permute(0, 2, 1, 3)
         # retrieve state

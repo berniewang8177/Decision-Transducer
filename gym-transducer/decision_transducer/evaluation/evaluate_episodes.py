@@ -127,7 +127,7 @@ def evaluate_episode_rtg(
         eval_model = model
         if torch.cuda.device_count() > 1:
             eval_model = model.module
-
+        # assert False, f"target_return: {target_return}"
         action = eval_model.get_action(
             (states.to(dtype=torch.float32) - state_mean) / state_std,
             actions.to(dtype=torch.float32),
@@ -137,7 +137,6 @@ def evaluate_episode_rtg(
         )
         actions[-1] = action
         action = action.detach().cpu().numpy()
-        # print( f"action: {action}" )
         state, reward, done, _ = env.step(action)
 
         cur_state = torch.from_numpy(state).to(device=device).reshape(1, state_dim)

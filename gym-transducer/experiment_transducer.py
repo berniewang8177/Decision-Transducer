@@ -55,7 +55,8 @@ def experiment(
     env_name, dataset = variant['env'], variant['dataset']
     model_type = variant['model_type']
     bias_mode = variant['bias']
-    group_name = f'{exp_prefix}-{env_name}-{dataset}' + f'-{bias_mode}'
+    norm_mode = variant['norm_mode']
+    group_name = f'{exp_prefix}-{env_name}-{dataset}' + f'-{bias_mode}-{norm_mode}'
     exp_prefix = f'{group_name}-{random.randint(int(1e5), int(1e6) - 1)}'
 
     if env_name == 'hopper':
@@ -73,40 +74,10 @@ def experiment(
         max_ep_len = 1000
         env_targets = [5000, 2500]
         scale = 1000.
-    elif env_name == 'maze2d-umaze':
-        import d4rl
-        env = gym.make('maze2d-umaze-v1')
-        max_ep_len = 1000
-        env_targets = [1.0, 0.5] # enforcing binary # [53, 6.5]
-        scale = 1000.
-    elif env_name == 'maze2d-umaze-dense':
-        import d4rl
-        env = gym.make('maze2d-umaze-dense-v1')
-        max_ep_len = 1000
-        env_targets = [67, 17]
-        scale = 1000.
-    elif env_name == 'antmaze-umaze':
-        import d4rl
-        env = gym.make('antmaze-umaze-v2')
-        max_ep_len = 1000
-        env_targets = [1, 0.86] # [10, 5]
-        scale = 1000.
-    elif env_name == 'antmaze-medium-play':
-        import d4rl
-        env = gym.make('antmaze-medium-play-v2')
-        max_ep_len = 1000
-        env_targets = [1, 0.9]
-        scale = 1000.
-    elif env_name == 'reacher2d':
-        from decision_transformer.envs.reacher_2d import Reacher2dEnv
-        env = Reacher2dEnv()
-        max_ep_len = 100
-        env_targets = [76, 40]
-        scale = 10.
     else:
         raise NotImplementedError
 
-    if model_type == 'bc':
+    if model_type == 'bc' or variant['bias'] == 'b0':
         env_targets = env_targets[:1]  # since BC ignores target, no need for different evaluations
 
     state_dim = env.observation_space.shape[0]
@@ -125,7 +96,6 @@ def experiment(
     states, traj_lens, returns = [], [], []
     for path in trajectories:
         if mode == 'delayed':  # delayed: all rewards moved to end of trajectory
-            # print('\n\nDalyed mode\n\n')
             path['rewards'][-1] = path['rewards'].sum()
             path['rewards'][:-1] = 0.
         states.append(path['observations'])
@@ -173,21 +143,19 @@ def experiment(
             p=p_sample,  # reweights so we sample according to timesteps of each trajecotry
         )
 
-        s, a, r, d, rtg, timesteps, mask = [], [], [], [], [], [], []
-        bos_a = []
+        s, a, d, rtg, timesteps, mask, lens =  [], [], [], [], [], [], []
+
         for i in range(batch_size):
             # process each trajectory (batch_inds[i]) of a batch
             traj = trajectories[int(sorted_inds[batch_inds[i]])]
             # si is the starting timestep
             si = random.randint(0, traj['rewards'].shape[0] - 1)
-
+            true_len = len( traj['observations'][si:si + max_len] )
+            lens.append(true_len)
             # an extra dimension is added at dimension 0, the rest are the same
             s.append(traj['observations'][si:si + max_len].reshape(1, -1, state_dim))
-            action_shift = traj['actions'][si+1:si+1 + max_len-1].reshape(1, -1, act_dim)
-            bos = np.ones( shape = (1,1,3) ) 
-            bos_a.append( np.concatenate([bos, action_shift], axis = 1) )
             a.append(traj['actions'][si:si + max_len].reshape(1, -1, act_dim))
-            r.append(traj['rewards'][si:si + max_len].reshape(1, -1, 1))
+
             if 'terminals' in traj:
                 d.append(traj['terminals'][si:si + max_len].reshape(1, -1))
             else:
@@ -199,31 +167,28 @@ def experiment(
             if rtg[-1].shape[1] <= s[-1].shape[1]:
                 rtg[-1] = np.concatenate([rtg[-1], np.zeros((1, 1, 1))], axis=1)
 
-
             # padding and state + reward normalization
             tlen = s[-1].shape[1]
-            s[-1] = np.concatenate([np.zeros((1, max_len - tlen, state_dim)), s[-1]], axis=1)
+            s[-1] = np.concatenate([ s[-1], np.zeros((1, max_len - tlen, state_dim))], axis=1)
             s[-1] = (s[-1] - state_mean) / state_std
-            a[-1] = np.concatenate([np.ones((1, max_len - tlen, act_dim)) * -10., a[-1]], axis=1)
-            bos_a[-1] = np.concatenate([np.ones((1, max_len - tlen, act_dim)) * -10., bos_a[-1]], axis=1)
-            r[-1] = np.concatenate([np.zeros((1, max_len - tlen, 1)), r[-1]], axis=1)
-            d[-1] = np.concatenate([np.ones((1, max_len - tlen)) * 2, d[-1]], axis=1)
-            rtg[-1] = np.concatenate([np.zeros((1, max_len - tlen, 1)), rtg[-1]], axis=1) / scale
-            timesteps[-1] = np.concatenate([np.zeros((1, max_len - tlen)), timesteps[-1]], axis=1)
-            # assert 
-            mask.append(np.concatenate([np.zeros((1, max_len - tlen)), np.ones((1, tlen))], axis=1))
+            a[-1] = np.concatenate([ a[-1], np.ones((1, max_len - tlen, act_dim)) * -10.], axis=1)
+
+            d[-1] = np.concatenate([ d[-1], np.ones((1, max_len - tlen)) * 2], axis=1)
+            rtg[-1] = np.concatenate([rtg[-1], np.zeros((1, max_len - tlen, 1)), ], axis=1) / scale
+            timesteps[-1] = np.concatenate([ timesteps[-1], np.zeros((1, max_len - tlen))], axis=1)
+            # 1s are what we want to attend. 0s denotes masking due to padding
+            mask.append(np.concatenate([ np.ones((1, tlen)), np.zeros((1, max_len - tlen)) ], axis=1))
 
         s = torch.from_numpy(np.concatenate(s, axis=0)).to(dtype=torch.float32, device=device)
         a = torch.from_numpy(np.concatenate(a, axis=0)).to(dtype=torch.float32, device=device)
-        bos_a = torch.from_numpy(np.concatenate(bos_a, axis=0)).to(dtype=torch.float32, device=device)
-        r = torch.from_numpy(np.concatenate(r, axis=0)).to(dtype=torch.float32, device=device)
         d = torch.from_numpy(np.concatenate(d, axis=0)).to(dtype=torch.long, device=device)
         rtg = torch.from_numpy(np.concatenate(rtg, axis=0)).to(dtype=torch.float32, device=device)
         timesteps = torch.from_numpy(np.concatenate(timesteps, axis=0)).to(dtype=torch.long, device=device)
         mask = torch.from_numpy(np.concatenate(mask, axis=0)).to(device=device)
         # shape: batch x max_timesteps_allowed x dimension of (state, action, rewards....)
         # print(f"state :{s.shape} action: {a.shape} rtg: {rtg.shape} timesteps:{timesteps.shape}")
-        return s, a, bos_a, r, d, rtg, timesteps, mask
+        # assert False, f"{mask} \n lens: {lens}"
+        return s, a, d, rtg, timesteps, mask, lens
 
     def eval_episodes(target_rew):
         def fn(model):
@@ -283,7 +248,8 @@ def experiment(
             n_positions=1024,
             resid_pdrop=variant['dropout'],
             attn_pdrop=variant['dropout'],
-            bias_mode = bias_mode
+            bias_mode = bias_mode,
+            norm_mode = norm_mode
         )
     else:
         raise NotImplementedError
@@ -327,14 +293,15 @@ def experiment(
         wandb.init(
             name=exp_prefix,
             group=group_name,
-            project='decision-transducer',
+            project='decision-transducer-formal',
             config=variant
         )
+        wandb.watch(model)
     # tracking the best model of each target Rtg so far
     best_rtgs = [0,0]
-    model_target0 = f"best_model_of_{env_targets[0]}"
-    model_target1 = f"best_model_of_{env_targets[1]}"
-    model_targets = [model_target0, model_target1]
+    # model_target0 = f"best_model_of_{env_targets[0]}"
+    # model_target1 = f"best_model_of_{env_targets[1]}"
+    # model_targets = [model_target0, model_target1]
     for iter in range(variant['max_iters']):
         print("\tIteration:", iter)
         plot = {}
@@ -343,13 +310,13 @@ def experiment(
         if log_to_wandb:
             wandb.log(logs)
 
-        for i,rtg in enumerate(plot['mean_return']):
-            if rtg >= best_rtgs[i]:
-                best_rtgs[i] = rtg
-                # dump my progress
-                save_name = f"{env_name}_{dataset}_{model_targets[i]}_achieve_{int(rtg)}_warmup_{ int(variant['warmup_steps'])//1000}k_bias2"
-                SAVE_PATH = os.path.join(".", "..", "..","saved_model" , save_name)
-                torch.save(model.state_dict(), SAVE_PATH)
+        # for i,rtg in enumerate(plot['mean_return']):
+        #     if rtg >= best_rtgs[i]:
+        #         best_rtgs[i] = rtg
+        #         # dump my progress
+        #         save_name = f"{env_name}_{dataset}_{model_targets[i]}_achieve_{int(rtg)}_warmup_{ int(variant['warmup_steps'])//1000}k_bias1"
+        #         SAVE_PATH = os.path.join(".", "..", "..","saved_model" , save_name)
+        #         torch.save(model.state_dict(), SAVE_PATH)
 
 
 
@@ -378,9 +345,10 @@ if __name__ == '__main__':
     parser.add_argument('--save_model', type=str, default='NO')
     parser.add_argument('--seeds', type=str, default="0 1 2")
     parser.add_argument('--bias', type=str, default="b1")
+    parser.add_argument('--norm_mode', type=str, default="n1")
 
     parser.add_argument('--log_to_wandb', '-w', type=bool, default=False)
 
     args = parser.parse_args()
 
-    experiment('gym-b1-c2.0', variant=vars(args))
+    experiment('gym-b0-norm-test', variant=vars(args))

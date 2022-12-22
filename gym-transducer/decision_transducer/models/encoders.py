@@ -25,7 +25,7 @@ def get_lookahead_mask(padded_input):
         .masked_fill(mask == 0, float("-inf"))
         .masked_fill(mask == 1, float(0.0))
     )
-    return mask.detach().to(padded_input.device)
+    return mask.detach().to(padded_input.device).float()
 
 class Encoder(torch.nn.Module):
 
@@ -34,10 +34,16 @@ class Encoder(torch.nn.Module):
         self.hidden_size = hidden_size
         self.encoder_layer = nn.TransformerEncoderLayer(d_model=self.hidden_size, nhead=1, batch_first=True, dim_feedforward = 256)
         self.transformer_encoder = nn.TransformerEncoder(self.encoder_layer, num_layers=n_layers )
-    
-    def forward(self, x, padding_mask):
-        causal_mask = get_lookahead_mask( x )
-        # print( f"padding_mask: {padding_mask[0]}" )
-        out = self.transformer_encoder(x, mask = causal_mask, src_key_padding_mask = padding_mask)
-        # assert False, f"out: {out[0]}"
+        self._init_params()
+        
+    def forward(self, x, causal_mask = None, padding_mask = None):
+        if causal_mask == None:
+            causal_mask = get_lookahead_mask( x )
+        out = self.transformer_encoder(x, mask = causal_mask,  src_key_padding_mask = padding_mask) # src_key_padding_mask = padding_mask.float()
+
         return out
+    
+    def _init_params(self):
+        for p in self.parameters():
+            if p.dim() > 1:
+                torch.nn.init.xavier_normal_(p)
