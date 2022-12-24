@@ -259,10 +259,10 @@ def experiment(
         model.load_state_dict(torch.load(load_path, map_location=torch.device(device) ))
         print("Model Load Sucess!")
     
-    if torch.cuda.device_count() > 1:
-        print("Let's use", torch.cuda.device_count(), "GPUs!")
-        # dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs
-        model = torch.nn.DataParallel(model)
+    # if torch.cuda.device_count() > 1:
+    #     print("Let's use", torch.cuda.device_count(), "GPUs!")
+    #     # dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs
+    #     model = torch.nn.DataParallel(model)
 
 
     model = model.to(device=device)
@@ -352,4 +352,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     b_mode = vars(args)['bias']
 
-    experiment(f'gym-{b_mode}-norm-test', variant=vars(args))
+    experiment(f'gym-{b_mode}-prenorm-normtest', variant=vars(args))

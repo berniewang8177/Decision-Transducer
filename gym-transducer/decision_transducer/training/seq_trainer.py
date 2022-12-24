@@ -5,8 +5,6 @@ import os
 import pickle
 import random
 from decision_transformer.training.trainer import Trainer
-import sklearn.metrics as metrics
-
 
 class SequenceTrainer(Trainer):
 

@@ -298,10 +298,10 @@ def experiment(
         model.load_state_dict(torch.load(load_path, map_location=torch.device(device) ))
         print("Model Load Sucess!")
     
-    if torch.cuda.device_count() > 1:
-        print("Let's use", torch.cuda.device_count(), "GPUs!")
-        # dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs
-        model = torch.nn.DataParallel(model)
+    # if torch.cuda.device_count() > 1:
+    #     print("Let's use", torch.cuda.device_count(), "GPUs!")
+    #     # dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs
+    #     model = torch.nn.DataParallel(model)
 
 
     model = model.to(device=device)
@@ -342,7 +342,7 @@ def experiment(
         wandb.init(
             name=exp_prefix,
             group=group_name,
-            project='decision-transformer',
+            project='decision-transducer-formal',
             config=variant
         )
 
@@ -388,7 +388,7 @@ if __name__ == '__main__':
     parser.add_argument('--weight_decay', '-wd', type=float, default=1e-4)
     parser.add_argument('--warmup_steps', type=int, default=8000)
     parser.add_argument('--num_eval_episodes', type=int, default=3)
-    parser.add_argument('--max_iters', type=int, default=400)
+    parser.add_argument('--max_iters', type=int, default=2000)
     parser.add_argument('--num_steps_per_iter', type=int, default=50)
     parser.add_argument('--device', type=str, default='cpu')
     parser.add_argument('--load_model', type=str, default='NO')
@@ -400,4 +400,4 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
 
-    experiment('gym-dt-baseline', variant=vars(args))
+    experiment('gym-dt-baseline-256_', variant=vars(args))

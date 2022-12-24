@@ -32,7 +32,7 @@ class Encoder(torch.nn.Module):
     def __init__(self, hidden_size, n_layers = 3):
         super().__init__()
         self.hidden_size = hidden_size
-        self.encoder_layer = nn.TransformerEncoderLayer(d_model=self.hidden_size, nhead=1, batch_first=True, dim_feedforward = 256, norm_first = True)
+        self.encoder_layer = nn.TransformerEncoderLayer(d_model=self.hidden_size, nhead=1, batch_first=True, dim_feedforward = 256, norm_first = False)
         self.transformer_encoder = nn.TransformerEncoder(self.encoder_layer, num_layers=n_layers )
         self._init_params()
         
