@@ -46,17 +46,16 @@ def experiment(
 
     num_eval_episodes = variant['num_eval_episodes']
     # seeds for each eval episode
-    seeds = [ int( x) for x in variant['seeds'].split() ]
+    seeds = int(variant['seeds'])
 
-    if len(seeds) != variant['num_eval_episodes']:
-        seeds = [ int(variant['seeds'])]
     log_to_wandb = variant.get('log_to_wandb', False)
 
     env_name, dataset = variant['env'], variant['dataset']
     model_type = variant['model_type']
     bias_mode = variant['bias']
     norm_mode = variant['norm_mode']
-    group_name = f'{exp_prefix}-{env_name}-{dataset}' + f'-{bias_mode}-{norm_mode}'
+    c_mode = variant['comb']
+    group_name = f'{exp_prefix}-{env_name}-{dataset}' + f'-{bias_mode}-{norm_mode}-{c_mode}'
     exp_prefix = f'{group_name}-{random.randint(int(1e5), int(1e6) - 1)}'
 
     if env_name == 'hopper':
@@ -208,7 +207,7 @@ def experiment(
                             state_mean=state_mean,
                             state_std=state_std,
                             device=device,
-                            seed = seeds[_]
+                            seed = seed
                         )
                     else:
                         ret, length = evaluate_episode(
@@ -249,7 +248,8 @@ def experiment(
             resid_pdrop=variant['dropout'],
             attn_pdrop=variant['dropout'],
             bias_mode = bias_mode,
-            norm_mode = norm_mode
+            norm_mode = norm_mode,
+            c_mode = c_mode,
         )
     else:
         raise NotImplementedError
@@ -327,7 +327,7 @@ if __name__ == '__main__':
     parser.add_argument('--mode', type=str, default='normal')  # normal for standard setting, delayed for sparse
     parser.add_argument('--K', type=int, default=20)
     parser.add_argument('--pct_traj', type=float, default=1.)
-    parser.add_argument('--batch_size', type=int, default=64)
+    parser.add_argument('--batch_size', type=int, default=256)
     parser.add_argument('--model_type', type=str, default='dt')  # dt for decision transformer, bc for behavior cloning
     parser.add_argument('--embed_dim', type=int, default=128)
     parser.add_argument('--n_layer', type=int, default=3)
@@ -336,20 +336,20 @@ if __name__ == '__main__':
     parser.add_argument('--dropout', type=float, default=0.1)
     parser.add_argument('--learning_rate', '-lr', type=float, default=1e-4)
     parser.add_argument('--weight_decay', '-wd', type=float, default=1e-4)
-    parser.add_argument('--warmup_steps', type=int, default=8000)
-    parser.add_argument('--num_eval_episodes', type=int, default=3)
-    parser.add_argument('--max_iters', type=int, default=400)
-    parser.add_argument('--num_steps_per_iter', type=int, default=50)
+    parser.add_argument('--warmup_steps', type=int, default=10000)
+    parser.add_argument('--num_eval_episodes', type=int, default=100)
+    parser.add_argument('--max_iters', type=int, default=10)
+    parser.add_argument('--num_steps_per_iter', type=int, default=2500)
     parser.add_argument('--device', type=str, default='cpu')
     parser.add_argument('--load_model', type=str, default='NO')
     parser.add_argument('--save_model', type=str, default='NO')
-    parser.add_argument('--seeds', type=str, default="0 1 2")
+    parser.add_argument('--seed', type=int, default=0)
     parser.add_argument('--bias', type=str, default="b1")
-    parser.add_argument('--norm_mode', type=str, default="n1")
+    parser.add_argument('--comb', type=str, default="c22")
+    parser.add_argument('--norm_mode', type=str, default="n3")
 
     parser.add_argument('--log_to_wandb', '-w', type=bool, default=False)
 
     args = parser.parse_args()
-    b_mode = vars(args)['bias']
-
-    experiment(f'gym-{b_mode}-prenorm-normtest', variant=vars(args))
+    seed = vars(args)['seed']
+    experiment(f'gym-transducer-seed-{seed}', variant=vars(args))

@@ -23,6 +23,7 @@ class DecisionTransducer(TrajectoryModel):
             action_tanh=True,
             bias_mode = 'b1',
             norm_mode = 'n1',
+            c_mode = 'c22',
             **kwargs
     ):
         super().__init__(state_dim, act_dim, max_length=max_length)
@@ -37,6 +38,7 @@ class DecisionTransducer(TrajectoryModel):
         self.action_encoder = Encoder(hidden_size)
         self.bias_mode = bias_mode
         self.norm_mode = norm_mode
+        self.c_mode = c_mode
 
         if self.bias_mode != "b0":
             self.rtg_encoder = Encoder(hidden_size)
@@ -130,9 +132,18 @@ class DecisionTransducer(TrajectoryModel):
         if self.bias_mode == "b0":
             pass
         else:
-            encoded_state = self.bias1(encoded_state, encoded_rtg, attention_mask)
+            # bias state
+            if self.c_mode == 'c22':
+                encoded_state = self.bias1.forward_22(encoded_state, encoded_rtg, causal_mask, attention_mask)
+            elif self.c_mode == 'c21':
+                encoded_state = self.bias1.forward_21(encoded_state, encoded_rtg, causal_mask, attention_mask)
+            
+            # bias state and also action
             if self.bias_mode == "b2":
-                encoded_action = self.bias2(encoded_action, encoded_rtg, attention_mask)
+                if self.c_mode == 'c22':
+                    encoded_action = self.bias2.forward_22(encoded_action, encoded_rtg, causal_mask, attention_mask)
+                elif self.c_mode == 'c21':
+                    encoded_action = self.bias2.forward_21(encoded_action, encoded_rtg, causal_mask, attention_mask)
         
         # join network
         join_encoded = self.join(encoded_state, encoded_action, attention_mask)

@@ -30,12 +30,30 @@ class BiasCombineNet(torch.nn.Module):
             if p.dim() > 1:
                 torch.nn.init.xavier_normal_(p)
 
-    def forward(self, data, rtgs, pad_mask):
+    # def forward(self, data, rtgs, pad_mask):
+    #     """
+    #     B1: cross attention. Query: state or action. Key/values: rtgs
+    #     C2.0: Treat the biased representation as a kind of embedding.
+    #     """
+    #     attn_mask = get_lookahead_mask(rtgs)
+    #     data_0 = data
+    #     data_1, _ = self.attn(
+    #         query = data,
+    #         key = rtgs,
+    #         value = rtgs,
+    #         key_padding_mask = pad_mask,
+    #         attn_mask = attn_mask
+    #         )
+
+    #     fuse = self.w5(data_0) + self.w6( data_1 ) 
+    #     return fuse
+
+    def forward_22(self, data, rtgs, attn_mask, pad_mask):
         """
         B1: cross attention. Query: state or action. Key/values: rtgs
-        C2.0: Treat the biased representation as a kind of embedding.
+        C2.2: Treat the biased representation as a kind of embedding.
         """
-        attn_mask = get_lookahead_mask(rtgs)
+        # attn_mask = get_lookahead_mask(rtgs)
         data_0 = data
         data_1, _ = self.attn(
             query = data,
@@ -44,45 +62,27 @@ class BiasCombineNet(torch.nn.Module):
             key_padding_mask = pad_mask,
             attn_mask = attn_mask
             )
+        fuse = self.w1(data_0) + self.w2( data_1 ) 
+        final = self.w3( self.gelu(fuse) )
+        return final
 
-        fuse = self.w5(data_0) + self.w6( data_1 ) 
-        return fuse
-
-    # def forward(self, data, rtgs, pad_mask):
-    #     """
-    #     B1: cross attention. Query: state or action. Key/values: rtgs
-    #     C2.2: Treat the biased representation as a kind of embedding.
-    #     """
-    #     attn_mask = get_lookahead_mask(rtgs)
-    #     data_0 = data
-    #     data_1, _ = self.attn(
-    #         query = data,
-    #         key = rtgs,
-    #         value = rtgs,
-    #         key_padding_mask = pad_mask,
-    #         attn_mask = attn_mask
-    #         )
-    #     fuse = self.w1(data_0) + self.w2( data_1 ) 
-    #     final = self.w3( self.gelu(fuse) )
-    #     return final
-
-    # def forward(self, data, rtgs, pad_mask):
-    #     """
-    #     B1: cross attention. Query: state or action. Key/values: rtgs
-    #     C2.1: Treat the biased representation as a kind of embedding.
-    #     """
-    #     attn_mask = get_lookahead_mask(rtgs)
-    #     data_0 = data
-    #     data_1, _ = self.attn(
-    #         query = data,
-    #         key = rtgs,
-    #         value = rtgs,
-    #         key_padding_mask = pad_mask,
-    #         attn_mask = attn_mask
-    #         )
-    #     fuse = self.w1(data_0) + self.w2( data_1 ) 
-    #     final = self.w3( fuse )
-    #     return final
+    def forward_21(self, data, rtgs, attn_mask, pad_mask):
+        """
+        B1: cross attention. Query: state or action. Key/values: rtgs
+        C2.1: Treat the biased representation as a kind of embedding.
+        """
+        # attn_mask = get_lookahead_mask(rtgs)
+        data_0 = data
+        data_1, _ = self.attn(
+            query = data,
+            key = rtgs,
+            value = rtgs,
+            key_padding_mask = pad_mask,
+            attn_mask = attn_mask
+            )
+        fuse = self.w1(data_0) + self.w2( data_1 ) 
+        final = self.w3( fuse )
+        return final
     
     # def forward(self, data, rtgs, pad_mask):
     #     """

@@ -46,10 +46,8 @@ def experiment(
 
     num_eval_episodes = variant['num_eval_episodes']
     # seeds for each eval episode
-    seeds = [ int( x) for x in variant['seeds'].split() ]
+    seed = int(variant['seed'])
 
-    if len(seeds) != variant['num_eval_episodes']:
-        seeds = [ int(variant['seeds'])]
     log_to_wandb = variant.get('log_to_wandb', False)
 
     env_name, dataset = variant['env'], variant['dataset']
@@ -243,7 +241,7 @@ def experiment(
                             state_mean=state_mean,
                             state_std=state_std,
                             device=device,
-                            seed = seeds[_]
+                            seed = _ # using 0,1,2 as seeds
                         )
                     else:
                         ret, length = evaluate_episode(
@@ -342,7 +340,7 @@ def experiment(
         wandb.init(
             name=exp_prefix,
             group=group_name,
-            project='decision-transducer-formal',
+            project='decision-transducer-lasteval',
             config=variant
         )
 
@@ -376,28 +374,26 @@ if __name__ == '__main__':
     parser.add_argument('--mode', type=str, default='normal')  # normal for standard setting, delayed for sparse
     parser.add_argument('--K', type=int, default=20)
     parser.add_argument('--pct_traj', type=float, default=1.)
-    parser.add_argument('--batch_size', type=int, default=64)
+    parser.add_argument('--batch_size', type=int, default=256)
     parser.add_argument('--model_type', type=str, default='dt')  # dt for decision transformer, bc for behavior cloning
     parser.add_argument('--embed_dim', type=int, default=128)
     parser.add_argument('--n_layer', type=int, default=4)
-    parser.add_argument('--n_layer_critics', type=int, default=3)
     parser.add_argument('--n_head', type=int, default=1)
     parser.add_argument('--activation_function', type=str, default='relu')
     parser.add_argument('--dropout', type=float, default=0.1)
     parser.add_argument('--learning_rate', '-lr', type=float, default=1e-4)
     parser.add_argument('--weight_decay', '-wd', type=float, default=1e-4)
-    parser.add_argument('--warmup_steps', type=int, default=8000)
+    parser.add_argument('--warmup_steps', type=int, default=10000)
     parser.add_argument('--num_eval_episodes', type=int, default=3)
-    parser.add_argument('--max_iters', type=int, default=2000)
-    parser.add_argument('--num_steps_per_iter', type=int, default=50)
+    parser.add_argument('--max_iters', type=int, default=10)
+    parser.add_argument('--num_steps_per_iter', type=int, default=2500)
     parser.add_argument('--device', type=str, default='cpu')
     parser.add_argument('--load_model', type=str, default='NO')
     parser.add_argument('--save_model', type=str, default='NO')
-    parser.add_argument('--seeds', type=str, default="0 1 2")
-
+    parser.add_argument('--seed', type=int, default= 0)
 
     parser.add_argument('--log_to_wandb', '-w', type=bool, default=False)
 
     args = parser.parse_args()
-
-    experiment('gym-dt-baseline-256_', variant=vars(args))
+    # seed = vars(args)['seed']
+    experiment(f'gym-dt-baseline-64', variant=vars(args))
