@@ -4,23 +4,15 @@ from decision_transducer.models.encoders import Encoder, get_lookahead_mask
 
 class JoinNet(torch.nn.Module):
 
-    def __init__(self, hidden_size):
+    def __init__(self, hidden_size, n_layers = 1, nhead = 2, pdrop = 0.1, pre_norm = False,  norm_joint = True):
         super().__init__()
         self.hidden_size = hidden_size
-        self.w1 = nn.Linear(hidden_size, hidden_size*2)
-        self.w2 = nn.Linear(hidden_size, hidden_size*2)
-        self.w3 = nn.Linear(2*hidden_size, hidden_size)
-        self.tanh = nn.Tanh()
-        self.gelu = nn.GELU()
-        self.dropout1 = torch.nn.Dropout(0.1)
-        self.dropout2 = torch.nn.Dropout(0.1)
-        self.norm1 = torch.nn.LayerNorm(hidden_size)
-        self.norm2 = torch.nn.LayerNorm(hidden_size)
-        self.norm3 = torch.nn.LayerNorm(hidden_size)
+        self.norm_joint = norm_joint
 
-        # self.attn = nn.MultiheadAttention(hidden_size, 1, batch_first=True)
+        if self.norm_joint:
+            self.norm1 = torch.nn.LayerNorm(hidden_size)
 
-        self.join_enc = Encoder(hidden_size, n_layers = 1)
+        self.join_enc = Encoder(hidden_size, n_layers = n_layers, nhead = nhead, pdrop = pdrop, pre_norm = False)
 
         self._init_params()
     
@@ -35,7 +27,9 @@ class JoinNet(torch.nn.Module):
         stacked_inputs = torch.stack(
                 (states, actions), dim=1
             ).permute(0, 2, 1, 3).reshape(batch_size, 2*seq_length, self.hidden_size)
-
+        if self.norm_joint:
+            stacked_inputs = self.norm1(stacked_inputs)
+        
         # to make the attention mask fit the stacked inputs, have to stack it as well
         stacked_pad_mask = torch.stack(
             (pad_mask, pad_mask), dim=1
@@ -48,6 +42,28 @@ class JoinNet(torch.nn.Module):
         x = x.reshape(batch_size, seq_length, 2, self.hidden_size).permute(0, 2, 1, 3)
         # retrieve state
         return x[:,0]
+    
+    def forward_all(self, rtgs, states, actions, pad_mask = None):
+        batch_size, seq_length = states.shape[0], states.shape[1]
+
+        stacked_inputs = torch.stack(
+                (rtgs, states, actions), dim=1
+            ).permute(0, 2, 1, 3).reshape(batch_size, 3*seq_length, self.hidden_size)
+        if self.norm_joint:
+            stacked_inputs = self.norm1(stacked_inputs)
+        
+        # to make the attention mask fit the stacked inputs, have to stack it as well
+        stacked_pad_mask = torch.stack(
+            (pad_mask, pad_mask, pad_mask), dim=1
+            ).permute(0, 2, 1).reshape(batch_size, 3*seq_length)
+
+        causal_mask = get_lookahead_mask(stacked_pad_mask )
+
+        x = self.join_enc(stacked_inputs, causal_mask, stacked_pad_mask)
+        # the 0 dim is batch, 1 dim is state,action
+        x = x.reshape(batch_size, seq_length, 3, self.hidden_size).permute(0, 2, 1, 3)
+        # retrieve state
+        return x[:,1]
 
     # concatenation does not work
     # def forward(self, states, actions, pad_mask):

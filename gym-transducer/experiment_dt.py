@@ -19,6 +19,9 @@ from decision_transformer.training.seq_trainer import SequenceTrainer
 
 import os
 
+def count_parameters(model):
+    return sum(p.numel() for p in model.parameters() if p.requires_grad) / 10**6
+
 def trajecotry_stats(trajs):
     """traj is a list, each element is a dict"""
     # import pandas as pd
@@ -161,7 +164,7 @@ def experiment(
 
     # reweight sampling by using timesteps of each trajectory instead of uniform
     p_sample = traj_lens[sorted_inds] / sum(traj_lens[sorted_inds])
-
+    print("p_sample:", p_sample)
     def get_batch(batch_size=256, max_len=K):
         batch_inds = np.random.choice(
             np.arange(num_trajectories),
@@ -282,6 +285,7 @@ def experiment(
             resid_pdrop=variant['dropout'],
             attn_pdrop=variant['dropout'],
         )
+        print( f"# of params: {count_parameters(model)} M")
     else:
         model = MLPBCModel(
             state_dim=state_dim,
@@ -340,7 +344,7 @@ def experiment(
         wandb.init(
             name=exp_prefix,
             group=group_name,
-            project='decision-transducer-lasteval',
+            project=f'dt-large-basesline-{env_name}-{dataset}',
             config=variant
         )
 
@@ -385,8 +389,8 @@ if __name__ == '__main__':
     parser.add_argument('--weight_decay', '-wd', type=float, default=1e-4)
     parser.add_argument('--warmup_steps', type=int, default=10000)
     parser.add_argument('--num_eval_episodes', type=int, default=3)
-    parser.add_argument('--max_iters', type=int, default=10)
-    parser.add_argument('--num_steps_per_iter', type=int, default=2500)
+    parser.add_argument('--max_iters', type=int, default=100)
+    parser.add_argument('--num_steps_per_iter', type=int, default=250)
     parser.add_argument('--device', type=str, default='cpu')
     parser.add_argument('--load_model', type=str, default='NO')
     parser.add_argument('--save_model', type=str, default='NO')
@@ -395,5 +399,6 @@ if __name__ == '__main__':
     parser.add_argument('--log_to_wandb', '-w', type=bool, default=False)
 
     args = parser.parse_args()
-    # seed = vars(args)['seed']
-    experiment(f'gym-dt-baseline-64', variant=vars(args))
+    seed = vars(args)['seed']
+    batch = vars(args)['batch_size']
+    experiment(f'gym-dt-baseline-{batch}', variant=vars(args))

@@ -2,7 +2,7 @@ import gym
 import numpy as np
 import pandas as pd # import it before torch to avoid bugs
 import torch
-
+import transformers
 import wandb
 
 import argparse
@@ -18,6 +18,9 @@ from decision_transducer.training.act_trainer import ActTrainer
 from decision_transducer.training.seq_trainer import SequenceTrainer
 
 import os
+
+def count_parameters(model):
+    return sum(p.numel() for p in model.parameters() if p.requires_grad) / 10**6
 
 def trajecotry_stats(trajs):
     """traj is a list, each element is a dict"""
@@ -43,10 +46,7 @@ def experiment(
 
     device = variant.get('device', 'cuda')
     print('Device is:', device)
-
     num_eval_episodes = variant['num_eval_episodes']
-    # seeds for each eval episode
-    seeds = int(variant['seeds'])
 
     log_to_wandb = variant.get('log_to_wandb', False)
 
@@ -55,7 +55,11 @@ def experiment(
     bias_mode = variant['bias']
     norm_mode = variant['norm_mode']
     c_mode = variant['comb']
-    group_name = f'{exp_prefix}-{env_name}-{dataset}' + f'-{bias_mode}-{norm_mode}-{c_mode}'
+    
+    group_name = f'{exp_prefix}-{env_name}-{dataset}' + f'-{bias_mode}-{norm_mode}'
+    if bias_mode != 'b0':
+        group_name += f'-{c_mode}'
+
     exp_prefix = f'{group_name}-{random.randint(int(1e5), int(1e6) - 1)}'
 
     if env_name == 'hopper':
@@ -133,7 +137,7 @@ def experiment(
 
     # reweight sampling by using timesteps of each trajectory instead of uniform
     p_sample = traj_lens[sorted_inds] / sum(traj_lens[sorted_inds])
-
+    
     def get_batch(batch_size=256, max_len=K):
         batch_inds = np.random.choice(
             np.arange(num_trajectories),
@@ -166,14 +170,15 @@ def experiment(
             if rtg[-1].shape[1] <= s[-1].shape[1]:
                 rtg[-1] = np.concatenate([rtg[-1], np.zeros((1, 1, 1))], axis=1)
 
-            # padding and state + reward normalization
+            # padding and state + reward normalization.
+            # left pad if Gpt2, right pad for pytorch transformer
             tlen = s[-1].shape[1]
             s[-1] = np.concatenate([ s[-1], np.zeros((1, max_len - tlen, state_dim))], axis=1)
             s[-1] = (s[-1] - state_mean) / state_std
             a[-1] = np.concatenate([ a[-1], np.ones((1, max_len - tlen, act_dim)) * -10.], axis=1)
-
             d[-1] = np.concatenate([ d[-1], np.ones((1, max_len - tlen)) * 2], axis=1)
             rtg[-1] = np.concatenate([rtg[-1], np.zeros((1, max_len - tlen, 1)), ], axis=1) / scale
+
             timesteps[-1] = np.concatenate([ timesteps[-1], np.zeros((1, max_len - tlen))], axis=1)
             # 1s are what we want to attend. 0s denotes masking due to padding
             mask.append(np.concatenate([ np.ones((1, tlen)), np.zeros((1, max_len - tlen)) ], axis=1))
@@ -184,9 +189,7 @@ def experiment(
         rtg = torch.from_numpy(np.concatenate(rtg, axis=0)).to(dtype=torch.float32, device=device)
         timesteps = torch.from_numpy(np.concatenate(timesteps, axis=0)).to(dtype=torch.long, device=device)
         mask = torch.from_numpy(np.concatenate(mask, axis=0)).to(device=device)
-        # shape: batch x max_timesteps_allowed x dimension of (state, action, rewards....)
-        # print(f"state :{s.shape} action: {a.shape} rtg: {rtg.shape} timesteps:{timesteps.shape}")
-        # assert False, f"{mask} \n lens: {lens}"
+
         return s, a, d, rtg, timesteps, mask, lens
 
     def eval_episodes(target_rew):
@@ -207,7 +210,7 @@ def experiment(
                             state_mean=state_mean,
                             state_std=state_std,
                             device=device,
-                            seed = seed
+                            seed = _, # using 0,1,2 as seeds
                         )
                     else:
                         ret, length = evaluate_episode(
@@ -245,12 +248,15 @@ def experiment(
             n_inner=4*variant['embed_dim'],
             activation_function=variant['activation_function'],
             n_positions=1024,
-            resid_pdrop=variant['dropout'],
-            attn_pdrop=variant['dropout'],
+            pdrop=variant['dropout'],
             bias_mode = bias_mode,
             norm_mode = norm_mode,
             c_mode = c_mode,
+            modality_emb = variant['modality_emb'],
+            norm_joint = variant['norm_joint'],
+            join_all = variant['join_all']
         )
+        print(f"# of params: {count_parameters(model)} M")
     else:
         raise NotImplementedError
 
@@ -258,12 +264,6 @@ def experiment(
         load_path = os.path.join(".", "..", "..", "saved_model", variant['load_model'] )
         model.load_state_dict(torch.load(load_path, map_location=torch.device(device) ))
         print("Model Load Sucess!")
-    
-    # if torch.cuda.device_count() > 1:
-    #     print("Let's use", torch.cuda.device_count(), "GPUs!")
-    #     # dim = 0 [30, xxx] -> [10, ...], [10, ...], [10, ...] on 3 GPUs
-    #     model = torch.nn.DataParallel(model)
-
 
     model = model.to(device=device)
 
@@ -277,6 +277,7 @@ def experiment(
         optimizer,
         lambda steps: min((steps+1)/warmup_steps, 1)
     )
+    # scheduler = transformers.get_cosine_schedule_with_warmup(optimizer, num_warmup_steps = warmup_steps, num_training_steps = variant['num_steps_per_iter'] * variant['max_iters'])
 
     if model_type == 'dt':
         trainer = SequenceTrainer(
@@ -293,7 +294,7 @@ def experiment(
         wandb.init(
             name=exp_prefix,
             group=group_name,
-            project='decision-transducer-formal',
+            project= f'dt-large-basesline-{env_name}-{dataset}',
             config=variant
         )
         wandb.watch(model)
@@ -327,8 +328,8 @@ if __name__ == '__main__':
     parser.add_argument('--mode', type=str, default='normal')  # normal for standard setting, delayed for sparse
     parser.add_argument('--K', type=int, default=20)
     parser.add_argument('--pct_traj', type=float, default=1.)
-    parser.add_argument('--batch_size', type=int, default=256)
-    parser.add_argument('--model_type', type=str, default='dt')  # dt for decision transformer, bc for behavior cloning
+    parser.add_argument('--batch_size', type=int, default=64)
+    parser.add_argument('--model_type', type=str, default='dt')  # dt for decision transducer, bc for behavior cloning
     parser.add_argument('--embed_dim', type=int, default=128)
     parser.add_argument('--n_layer', type=int, default=3)
     parser.add_argument('--n_head', type=int, default=1)
@@ -336,20 +337,30 @@ if __name__ == '__main__':
     parser.add_argument('--dropout', type=float, default=0.1)
     parser.add_argument('--learning_rate', '-lr', type=float, default=1e-4)
     parser.add_argument('--weight_decay', '-wd', type=float, default=1e-4)
-    parser.add_argument('--warmup_steps', type=int, default=10000)
-    parser.add_argument('--num_eval_episodes', type=int, default=100)
-    parser.add_argument('--max_iters', type=int, default=10)
-    parser.add_argument('--num_steps_per_iter', type=int, default=2500)
+    parser.add_argument('--warmup_steps', type=int, default= 40000)
+    parser.add_argument('--num_eval_episodes', type=int, default=3)
+    parser.add_argument('--max_iters', type=int, default=100)
+    parser.add_argument('--num_steps_per_iter', type=int, default=1000)
     parser.add_argument('--device', type=str, default='cpu')
     parser.add_argument('--load_model', type=str, default='NO')
     parser.add_argument('--save_model', type=str, default='NO')
-    parser.add_argument('--seed', type=int, default=0)
-    parser.add_argument('--bias', type=str, default="b1")
+
+    parser.add_argument('--bias', type=str, default="b2")
     parser.add_argument('--comb', type=str, default="c22")
     parser.add_argument('--norm_mode', type=str, default="n3")
-
+    parser.add_argument('--modality_emb', type=int, default= 3)
+    # if need it False, just don't specify --norm_joint
+    parser.add_argument('--norm_joint', action ='store_true')
+    parser.add_argument('--join_all', action ='store_true')
     parser.add_argument('--log_to_wandb', '-w', type=bool, default=False)
 
     args = parser.parse_args()
-    seed = vars(args)['seed']
-    experiment(f'gym-transducer-seed-{seed}', variant=vars(args))
+    batch = vars(args)['batch_size']
+    modality_emb = vars(args)['modality_emb']
+    dropout = vars(args)['dropout']
+    norm_joint = vars(args)['norm_joint']
+    norm_prefix = 'has' if norm_joint else 'no'
+    join_all = 'all' if vars(args)['join_all'] else 'sa' 
+    experiment(f'gym-transducer-64-40k-warm-prenorm-encoders-{ norm_prefix }ln-postnorm-join-2head-emb-{modality_emb}-dropout-{dropout}', variant=vars(args))
+    # warmup_step =  vars(args)['warmup_steps']
+    # experiment(f'warmuptest_{warmup_step}_cosinedecay', variant=vars(args))

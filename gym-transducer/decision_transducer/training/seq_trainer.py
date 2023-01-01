@@ -4,7 +4,7 @@ from datetime import datetime
 import os
 import pickle
 import random
-from decision_transformer.training.trainer import Trainer
+from decision_transducer.training.trainer import Trainer
 
 class SequenceTrainer(Trainer):
 
@@ -24,10 +24,9 @@ class SequenceTrainer(Trainer):
 
         action_preds = action_preds.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
         action_target = action_target.reshape(-1, act_dim)[attention_mask.reshape(-1) > 0]
-        nan_mask = action_preds.isnan()
-
-        action_target = action_target[~nan_mask]
-        action_preds = action_preds[~nan_mask]
+        # nan_mask = action_preds.isnan()
+        # action_target = action_target[~nan_mask]
+        # action_preds = action_preds[~nan_mask]
         loss = self.loss_fn(
             None, action_preds, None,
             None, action_target, None,

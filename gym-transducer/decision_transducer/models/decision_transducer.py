@@ -10,7 +10,7 @@ from decision_transducer.models.biasing_combine import BiasCombineNet
 class DecisionTransducer(TrajectoryModel):
 
     """
-    This model uses GPT to model (Return_1, state_1, action_1, Return_2, state_2, ...)
+    This model uses causasl transformer encoder to model (Return-to-go_1, state_1, action_1, ...) separately
     """
 
     def __init__(
@@ -21,30 +21,48 @@ class DecisionTransducer(TrajectoryModel):
             max_length=None,
             max_ep_len=4096,
             action_tanh=True,
+            pdrop = 0.1,
             bias_mode = 'b1',
             norm_mode = 'n1',
             c_mode = 'c22',
+            modality_emb = 0,
+            norm_joint = False,
+            join_all = False,
             **kwargs
     ):
         super().__init__(state_dim, act_dim, max_length=max_length)
 
         self.hidden_size = hidden_size
-
-        # note: the only difference between this GPT2Model and the default Huggingface version
-        # is that the positional embeddings are removed (since we'll add those ourselves)
+        self.pdrop = pdrop
+        self.pre_norm = True
+        if norm_mode == 'n0':
+            # no layer norm will be applied after state/action/Rtg embedding 
+            pass
+        else:
+            self.embed_ln1 = nn.LayerNorm(hidden_size)
+            if norm_mode != 'n1':
+                self.embed_ln2 = nn.LayerNorm(hidden_size)
+                self.embed_ln3 = nn.LayerNorm(hidden_size)
 
         # encoders for 3 modalities
-        self.state_encoder = Encoder(hidden_size)
-        self.action_encoder = Encoder(hidden_size)
+        self.state_encoder = Encoder(hidden_size, pdrop = self.pdrop, pre_norm = self.pre_norm)
+        self.action_encoder = Encoder(hidden_size, pdrop = self.pdrop, pre_norm = self.pre_norm)
+
         self.bias_mode = bias_mode
         self.norm_mode = norm_mode
         self.c_mode = c_mode
 
         if self.bias_mode != "b0":
-            self.rtg_encoder = Encoder(hidden_size)
+            self.rtg_encoder = Encoder(hidden_size, pdrop = self.pdrop, pre_norm = self.pre_norm)
 
-        # join network with tanh out
-        self.join = JoinNet(hidden_size)
+        # join network with postnorm 
+        self.join = JoinNet(hidden_size, pdrop = self.pdrop, pre_norm = False,  norm_joint = norm_joint) #
+        self.join_all = join_all
+
+        # provide modality embedding before join net
+        self.modality_emb = modality_emb
+        if self.modality_emb > 0:
+            self.mod_emb = nn.Embedding(modality_emb, self.hidden_size)
 
         # biasing amd combine
         self.bias1 = BiasCombineNet(hidden_size)
@@ -54,18 +72,11 @@ class DecisionTransducer(TrajectoryModel):
         self.embed_return = torch.nn.Linear(1, hidden_size)
         self.embed_state = torch.nn.Linear(self.state_dim, hidden_size)
         self.embed_action = torch.nn.Linear(self.act_dim, hidden_size)
-
-        self.embed_ln1 = nn.LayerNorm(hidden_size)
-        if norm_mode != 'n1':
-            self.embed_ln2 = nn.LayerNorm(hidden_size)
-            self.embed_ln3 = nn.LayerNorm(hidden_size)
-
+        
         # note: we don't predict states or returns for the paper
-        self.predict_state = torch.nn.Linear(hidden_size, self.state_dim)
         self.predict_action = nn.Sequential(
             *([nn.Linear(hidden_size, self.act_dim)] + ([nn.Tanh()] if action_tanh else []))
         )
-        self.predict_return = torch.nn.Linear(hidden_size, 1)
 
         self._init_params()
     
@@ -74,7 +85,7 @@ class DecisionTransducer(TrajectoryModel):
             if p.dim() > 1:
                 torch.nn.init.xavier_normal_(p)
 
-    def forward(self, states, actions,  returns_to_go, timesteps, attention_mask=None, lens = None):
+    def forward(self, states, actions, returns_to_go, timesteps, attention_mask=None, lens = None):
 
         batch_size, seq_length = states.shape[0], states.shape[1]
         # 1 means the position want to attend. Reverse it so that 1 means masking padding positions.
@@ -99,9 +110,18 @@ class DecisionTransducer(TrajectoryModel):
         # time embeddings are treated similar to positional embeddings
         state_embeddings = state_embeddings + time_embeddings 
         action_embeddings = action_embeddings + time_embeddings 
-        returns_embeddings =  returns_embeddings + time_embeddings 
+        returns_embeddings =  returns_embeddings + time_embeddings
+        
+        # modality embedding
+        if self.modality_emb > 0:
+            returns_embeddings += self.mod_emb( torch.tensor(0).to(returns_embeddings.device) )
+            state_embeddings += self.mod_emb( torch.tensor(1).to(state_embeddings.device) )
+            action_embeddings += self.mod_emb(torch.tensor(2).to(action_embeddings.device) )
 
-        if self.norm_mode == 'n1':
+        # layer norm before entering the model
+        if self.norm_mode == 'n0':
+            pass
+        elif self.norm_mode == 'n1':
             returns_embeddings = self.embed_ln1( returns_embeddings )
             state_embeddings = self.embed_ln1( state_embeddings )
             action_embeddings = self.embed_ln1(  action_embeddings )
@@ -117,6 +137,7 @@ class DecisionTransducer(TrajectoryModel):
             returns_embeddings = self.embed_ln1( returns_embeddings )
             state_embeddings = self.embed_ln2( state_embeddings )
             action_embeddings = self.embed_ln3(  action_embeddings )
+        
 
         # encoding with causal mask
         causal_mask = get_lookahead_mask(state_embeddings)
@@ -127,7 +148,7 @@ class DecisionTransducer(TrajectoryModel):
         # self.debug( encoded_action, 'at encoded_action')
         if self.bias_mode != "b0":
             encoded_rtg = self.rtg_encoder(returns_embeddings, causal_mask, attention_mask)
-        
+
         # combiner & biasing
         if self.bias_mode == "b0":
             pass
@@ -137,16 +158,23 @@ class DecisionTransducer(TrajectoryModel):
                 encoded_state = self.bias1.forward_22(encoded_state, encoded_rtg, causal_mask, attention_mask)
             elif self.c_mode == 'c21':
                 encoded_state = self.bias1.forward_21(encoded_state, encoded_rtg, causal_mask, attention_mask)
-            
+            else:
+                encoded_state = self.bias1.forward_20(encoded_state, encoded_rtg, causal_mask, attention_mask)
+
             # bias state and also action
             if self.bias_mode == "b2":
                 if self.c_mode == 'c22':
                     encoded_action = self.bias2.forward_22(encoded_action, encoded_rtg, causal_mask, attention_mask)
                 elif self.c_mode == 'c21':
                     encoded_action = self.bias2.forward_21(encoded_action, encoded_rtg, causal_mask, attention_mask)
+                else:
+                    encoded_action = self.bias2.forward_20(encoded_action, encoded_rtg, causal_mask, attention_mask)
         
         # join network
-        join_encoded = self.join(encoded_state, encoded_action, attention_mask)
+        if self.join_all == False:
+            join_encoded = self.join.forward(encoded_state, encoded_action, attention_mask)
+        else:
+            join_encoded = self.join.forward_all(encoded_rtg, encoded_state, encoded_action, attention_mask)
 
         # get predictions 
         action_preds = self.predict_action(join_encoded)  # predict next action given state
@@ -185,6 +213,7 @@ class DecisionTransducer(TrajectoryModel):
             # pad all tokens to sequence length
             # 1 means the position we want to attend. Reverse it for padding inside forward.
             attention_mask = torch.cat([ torch.ones(states.shape[1]), torch.zeros(self.max_length-states.shape[1]) ])
+            # attention_mask = torch.cat([ torch.zeros(self.max_length-states.shape[1]), torch.ones(states.shape[1]),  ])
             attention_mask = attention_mask.to(dtype=torch.long, device=states.device).reshape(1, -1)
             states = torch.cat(
                 [states, torch.zeros((states.shape[0], self.max_length-states.shape[1], self.state_dim), device=states.device)],
@@ -194,12 +223,13 @@ class DecisionTransducer(TrajectoryModel):
                             device=actions.device) ],
                 dim=1).to(dtype=torch.float32)
             returns_to_go = torch.cat(
-                [returns_to_go, torch.zeros((returns_to_go.shape[0], self.max_length-returns_to_go.shape[1], 1), device=returns_to_go.device)],
+                [returns_to_go, torch.zeros((returns_to_go.shape[0], self.max_length-returns_to_go.shape[1], 1), device=returns_to_go.device), ],
                 dim=1).to(dtype=torch.float32)
             timesteps = torch.cat(
                 [timesteps, torch.zeros((timesteps.shape[0], self.max_length-timesteps.shape[1]), device=timesteps.device)],
                 dim=1
             ).to(dtype=torch.long)
+
         else:
             attention_mask = None
         # assert False,f"{returns_to_go}\n{attention_mask}"

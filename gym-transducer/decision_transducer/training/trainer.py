@@ -55,10 +55,10 @@ class Trainer:
         logs['time/total'] = time.time() - self.start_time
         logs['time/evaluation'] = time.time() - eval_start
 
-        if num_steps > 0:
-            plot_dict['mean_loss'] = np.mean(train_losses)
-            logs['training/train_loss_mean'] = np.mean(train_losses)
-            logs['training/train_loss_std'] = np.std(train_losses)
+        plot_dict['mean_loss'] = np.mean(train_losses)
+        logs['training/train_loss_mean'] = np.mean(train_losses)
+        logs['training/train_loss_std'] = np.std(train_losses)
+        logs['training/learning_rate'] = self.scheduler.get_last_lr()[0]
 
         for k in self.diagnostics:
             logs[k] = self.diagnostics[k]
