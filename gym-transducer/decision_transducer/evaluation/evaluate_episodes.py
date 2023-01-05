@@ -126,7 +126,6 @@ def evaluate_episode_rtg(
 
         eval_model = model
 
-        # assert False, f"target_return: {target_return}"
         action = eval_model.get_action(
             (states.to(dtype=torch.float32) - state_mean) / state_std,
             actions.to(dtype=torch.float32),
@@ -145,9 +144,17 @@ def evaluate_episode_rtg(
         if mode != 'delayed':
             pred_return = target_return[0,-1] - (reward/scale)
         else:
+            # delayed mode
             pred_return = target_return[0,-1]
+
         target_return = torch.cat(
             [target_return, pred_return.reshape(1, 1)], dim=1)
+
+        if pred_return.cpu() < 0:
+            print( "*" * 8, f"\nbackup {target_return[0][-5:]}", end = "")
+            delta = abs(pred_return.cpu()) + 0.1
+            target_return += delta
+            print( f"with {target_return[0][-5:]}\n", "*" * 8)
         timesteps = torch.cat(
             [timesteps,
              torch.ones((1, 1), device=device, dtype=torch.long) * (t+1)], dim=1)

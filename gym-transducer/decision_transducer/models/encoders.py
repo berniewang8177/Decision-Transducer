@@ -36,6 +36,7 @@ class Encoder(torch.nn.Module):
         f_dim = 256 * nhead
         print("f_dim:", f_dim)
         self.encoder_layer = nn.TransformerEncoderLayer(d_model=self.hidden_size, nhead= nhead, batch_first=True, dim_feedforward = f_dim, dropout = pdrop, norm_first = pre_norm)
+        self.pre_norm  = pre_norm
 
         self.transformer_encoder = nn.TransformerEncoder(self.encoder_layer, num_layers=n_layers )
         self._init_params()
@@ -44,7 +45,6 @@ class Encoder(torch.nn.Module):
         if causal_mask == None:
             causal_mask = get_lookahead_mask( x )
         out = self.transformer_encoder(x, mask = causal_mask,  src_key_padding_mask = padding_mask) # src_key_padding_mask = padding_mask.float()
-
         return out
     
     def _init_params(self):
