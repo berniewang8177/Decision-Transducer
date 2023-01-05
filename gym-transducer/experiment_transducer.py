@@ -362,7 +362,7 @@ if __name__ == '__main__':
     norm_prefix = 'has' if norm_joint else 'no'
     join_all = 'all' if vars(args)['join_all'] else 'sa' 
     # experiment(f'gym-transducer-64-40k-warm-prenorm-encoders-{ norm_prefix }ln-postnorm-join-2head-emb-{modality_emb}-dropout-{dropout}', variant=vars(args))
-    experiment(f'backup-gym-transducer-256-10k-warm-prenorm-encoders-{ norm_prefix }ln-postnorm-join-2head-emb-{modality_emb}-dropout-{dropout}', variant=vars(args))
+
     # experiment(f'gym-transducer-256-10k-warm-prenorm-encoders-followln-postnorm-join-2head-emb-{modality_emb}-dropout-{dropout}', variant=vars(args))
     # warmup_step =  vars(args)['warmup_steps']
     # experiment(f'warmuptest_{warmup_step}_cosinedecay', variant=vars(args))
