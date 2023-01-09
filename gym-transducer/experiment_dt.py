@@ -17,6 +17,8 @@ from decision_transformer.models.mlp_bc import MLPBCModel
 from decision_transformer.training.act_trainer import ActTrainer
 from decision_transformer.training.seq_trainer import SequenceTrainer
 
+from utils import set_seed
+
 import os
 
 def count_parameters(model):
@@ -56,7 +58,8 @@ def experiment(
     env_name, dataset = variant['env'], variant['dataset']
     model_type = variant['model_type']
     group_name = f'{exp_prefix}-{env_name}-{dataset}'
-    exp_prefix = f'{group_name}-{random.randint(int(1e5), int(1e6) - 1)}'
+    train_seed = variant['seed']
+    exp_prefix = f'{group_name}-train-seed-{train_seed}-{random.randint(int(1e5), int(1e6) - 1)}'
 
     if env_name == 'hopper':
         env = gym.make('Hopper-v3')
@@ -401,5 +404,6 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     seed = vars(args)['seed']
+    set_seed(seed)
     batch = vars(args)['batch_size']
-    experiment(f'gym-dt-baseline-{batch}-train-seed-{seed}', variant=vars(args))
+    experiment(f'gym-dt-baseline-{batch}', variant=vars(args))
