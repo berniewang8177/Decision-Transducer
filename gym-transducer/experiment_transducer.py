@@ -17,6 +17,8 @@ from decision_transducer.models.mlp_bc import MLPBCModel
 from decision_transducer.training.act_trainer import ActTrainer
 from decision_transducer.training.seq_trainer import SequenceTrainer
 
+from utils import set_seed
+
 import os
 
 def count_parameters(model):
@@ -59,18 +61,20 @@ def experiment(
     group_name = f'{exp_prefix}-{env_name}-{dataset}' + f'-{bias_mode}-{norm_mode}'
     if bias_mode != 'b0':
         group_name += f'-{c_mode}'
-
-    exp_prefix = f'{group_name}-{random.randint(int(1e5), int(1e6) - 1)}'
+    train_seed = variant['seed']
+    exp_prefix = f'{group_name}-seed-{train_seed}-{random.randint(int(1e5), int(1e6) - 1)}'
 
     if env_name == 'hopper':
         env = gym.make('Hopper-v3')
         max_ep_len = 1000
-        env_targets = [3600, 1800]  # evaluation conditioning targets
+        env_targets = [3600, 1800]  
+        # env_targets = [3000, 2400, 1200, 600]
         scale = 1000.  # normalization for rewards/returns
     elif env_name == 'halfcheetah':
         env = gym.make('HalfCheetah-v3')
         max_ep_len = 1000
         env_targets = [12000, 6000]
+        # env_targets = [10000, 8000, 4000, 2000]
         scale = 1000.
     elif env_name == 'walker2d':
         env = gym.make('Walker2d-v3')
@@ -273,9 +277,10 @@ def experiment(
         lr=variant['learning_rate'],
         weight_decay=variant['weight_decay'],
     )
+    lr_ratio = 0.5 
     scheduler = torch.optim.lr_scheduler.LambdaLR(
         optimizer,
-        lambda steps: min((steps+1)/warmup_steps, 1)
+        lambda steps: min((steps+1)/warmup_steps, 1) if steps < warmup_steps else lr_ratio + (1-lr_ratio) * ( 0.9997 ** (steps-warmup_steps) )
     )
     # scheduler = transformers.get_cosine_schedule_with_warmup(optimizer, num_warmup_steps = warmup_steps, num_training_steps = variant['num_steps_per_iter'] * variant['max_iters'])
 
@@ -307,17 +312,9 @@ def experiment(
         print("\tIteration:", iter)
         plot = {}
         # logs, plot = trainer.train_iteration(num_steps=variant['num_steps_per_iter'], iter_num=iter+1, plot_dict = plot, print_logs=True)
-        logs, plot = trainer.train_iteration(num_steps=variant['num_steps_per_iter'], iter_num=iter+1, plot_dict = plot, print_logs=True)
+        logs = trainer.train_iteration(num_steps=variant['num_steps_per_iter'], iter_num=iter+1, plot_dict = plot, print_logs=True)
         if log_to_wandb:
             wandb.log(logs)
-
-        # for i,rtg in enumerate(plot['mean_return']):
-        #     if rtg >= best_rtgs[i]:
-        #         best_rtgs[i] = rtg
-        #         # dump my progress
-        #         save_name = f"{env_name}_{dataset}_{model_targets[i]}_achieve_{int(rtg)}_warmup_{ int(variant['warmup_steps'])//1000}k_bias1"
-        #         SAVE_PATH = os.path.join(".", "..", "..","saved_model" , save_name)
-        #         torch.save(model.state_dict(), SAVE_PATH)
 
 
 
@@ -353,16 +350,19 @@ if __name__ == '__main__':
     parser.add_argument('--norm_joint', action ='store_true')
     parser.add_argument('--join_all', action ='store_true')
     parser.add_argument('--log_to_wandb', '-w', type=bool, default=False)
+    parser.add_argument('--seed', type=int, default= 1)
 
     args = parser.parse_args()
+
     batch = vars(args)['batch_size']
     modality_emb = vars(args)['modality_emb']
     dropout = vars(args)['dropout']
     norm_joint = vars(args)['norm_joint']
     norm_prefix = 'has' if norm_joint else 'no'
     join_all = 'all' if vars(args)['join_all'] else 'sa' 
-    # experiment(f'gym-transducer-64-40k-warm-prenorm-encoders-{ norm_prefix }ln-postnorm-join-2head-emb-{modality_emb}-dropout-{dropout}', variant=vars(args))
 
-    # experiment(f'gym-transducer-256-10k-warm-prenorm-encoders-followln-postnorm-join-2head-emb-{modality_emb}-dropout-{dropout}', variant=vars(args))
-    # warmup_step =  vars(args)['warmup_steps']
-    # experiment(f'warmuptest_{warmup_step}_cosinedecay', variant=vars(args))
+    seed = vars(args)['seed']
+    lr = vars(args)['learning_rate']
+    set_seed(seed) 
+
+    experiment(f'DTD-{batch}-10k-warm-decay-{lr}-lr-prenorm-3-layer-encoders-{ norm_prefix }ln-postnorm-join-2head-emb-{modality_emb}', variant=vars(args))

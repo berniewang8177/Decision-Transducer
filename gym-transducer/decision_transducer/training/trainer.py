@@ -45,17 +45,15 @@ class Trainer:
 
         self.model.eval()
         # get the mean return of this Iteration
-        plot_dict['mean_return'] = []
         for eval_fn in self.eval_fns: # self.eval_fns gives results for each target Rtg
             outputs = eval_fn(self.model)
-            plot_dict['mean_return'].append(outputs[ list(outputs.keys())[0]])
+
             for k, v in outputs.items():
                 logs[f'evaluation/{k}'] = v
 
         logs['time/total'] = time.time() - self.start_time
         logs['time/evaluation'] = time.time() - eval_start
 
-        plot_dict['mean_loss'] = np.mean(train_losses)
         logs['training/train_loss_mean'] = np.mean(train_losses)
         logs['training/train_loss_std'] = np.std(train_losses)
         logs['training/learning_rate'] = self.scheduler.get_last_lr()[0]
@@ -69,7 +67,7 @@ class Trainer:
             for k, v in logs.items():
                 print(f'{k}: {v}')
 
-        return logs, plot_dict
+        return logs
 
     def train_step(self):
         states, actions, rewards, dones, attention_mask, returns = self.get_batch(self.batch_size)

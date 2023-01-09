@@ -66,7 +66,8 @@ def experiment(
     elif env_name == 'halfcheetah':
         env = gym.make('HalfCheetah-v3')
         max_ep_len = 1000
-        env_targets = [12000, 6000]
+        # env_targets = [12000, 6000]
+        env_targets = [10000, 8000, 4000, 2000]
         scale = 1000.
     elif env_name == 'walker2d':
         env = gym.make('Walker2d-v3')
@@ -394,11 +395,11 @@ if __name__ == '__main__':
     parser.add_argument('--device', type=str, default='cpu')
     parser.add_argument('--load_model', type=str, default='NO')
     parser.add_argument('--save_model', type=str, default='NO')
-    parser.add_argument('--seed', type=int, default= 0)
+    parser.add_argument('--seed', type=int, default= 1)
 
     parser.add_argument('--log_to_wandb', '-w', type=bool, default=False)
 
     args = parser.parse_args()
     seed = vars(args)['seed']
     batch = vars(args)['batch_size']
-    experiment(f'gym-dt-baseline-{batch}', variant=vars(args))
+    experiment(f'gym-dt-baseline-{batch}-train-seed-{seed}', variant=vars(args))

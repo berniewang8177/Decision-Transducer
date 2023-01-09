@@ -9,8 +9,9 @@ from decision_transducer.training.trainer import Trainer
 class SequenceTrainer(Trainer):
 
     def train_step(self):
-        states, true_actions, dones, rtg, timesteps, attention_mask, true_lens = self.get_batch(self.batch_size)
 
+        states, true_actions, dones, rtg, timesteps, attention_mask, true_lens = self.get_batch(self.batch_size)
+        
         action_target = torch.clone(true_actions)
         attn_to_be_modified = attention_mask.clone()
         state_preds, action_preds, reward_preds = self.model.forward(

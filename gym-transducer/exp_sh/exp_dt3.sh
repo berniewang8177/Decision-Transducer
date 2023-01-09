@@ -5,5 +5,8 @@ cd ./..
 # python3 experiment_transducer.py --env halfcheetah --dataset medium --modality_emb 3 --log_to_wandb True --device cuda:3
 
 # python3 experiment_transducer.py --env walker2d --dataset medium-replay --modality_emb 3 --log_to_wandb True --device cuda:3
-python3 experiment_transducer.py --env halfcheetah --dataset medium-replay --modality_emb 3 --log_to_wandb True --device cuda:3
+# python3 experiment_transducer.py --env halfcheetah --dataset medium-replay --modality_emb 3 --log_to_wandb True --device cuda:3
 # python3 experiment_transducer.py --env hopper --dataset medium-replay --modality_emb 3 --log_to_wandb True --device cuda:3
+
+# medium-replay
+python3 experiment_transducer.py --env hopper --dataset medium-replay --device cuda:3 --seed 3 --learning_rate 1.5e-4 --log_to_wandb True

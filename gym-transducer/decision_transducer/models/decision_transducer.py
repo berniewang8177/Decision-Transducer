@@ -18,6 +18,7 @@ class DecisionTransducer(TrajectoryModel):
             state_dim,
             act_dim,
             hidden_size,
+            n_layer = 3,
             max_length=None,
             max_ep_len=4096,
             action_tanh=True,
@@ -45,15 +46,15 @@ class DecisionTransducer(TrajectoryModel):
                 self.embed_ln3 = nn.LayerNorm(hidden_size)
 
         # encoders for 3 modalities
-        self.state_encoder = Encoder(hidden_size, pdrop = self.pdrop, pre_norm = self.pre_norm)
-        self.action_encoder = Encoder(hidden_size, pdrop = self.pdrop, pre_norm = self.pre_norm)
+        self.state_encoder = Encoder(hidden_size, n_layers = n_layer, pdrop = self.pdrop, pre_norm = self.pre_norm)
+        self.action_encoder = Encoder(hidden_size, n_layers = n_layer, pdrop = self.pdrop, pre_norm = self.pre_norm)
 
         self.bias_mode = bias_mode
         self.norm_mode = norm_mode
         self.c_mode = c_mode
 
         if self.bias_mode != "b0":
-            self.rtg_encoder = Encoder(hidden_size, pdrop = self.pdrop, pre_norm = self.pre_norm)
+            self.rtg_encoder = Encoder(hidden_size, n_layers = n_layer, pdrop = self.pdrop, pre_norm = self.pre_norm)
 
         # join network with postnorm 
         self.join = JoinNet(hidden_size, pdrop = self.pdrop, pre_norm = False,  norm_joint = norm_joint) #
