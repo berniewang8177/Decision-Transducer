@@ -1,0 +1,3005 @@
+	Iteration: 0
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+/home/yiqiw2/miniconda3/envs/dt/lib/python3.8/site-packages/gym/core.py:172: DeprecationWarning: [33mWARN: Function `env.seed(seed)` is marked as deprecated and will be removed in the future. Please use `env.reset(seed=seed) instead.
+  deprecation(
+/home/yiqiw2/miniconda3/envs/dt/lib/python3.8/site-packages/gym/utils/seeding.py:38: DeprecationWarning: [33mWARN: Function `rng.randn(*size)` is marked as deprecated and will be removed in the future. Please use `rng.standard_normal(size)` instead.
+  deprecation(
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 1
+time/training: 19.13276481628418
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 102.43037986755371
+time/evaluation: 79.19555473327637
+training/train_loss_mean: 323.38852935791016
+training/train_loss_std: 30.8874964314155
+training/learning_rate: 2.51e-06
+training/action_error: 0.8510583639144897
+training/waypoint_error: 267.6001892089844
+	Iteration: 1
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 2
+time/training: 17.698482275009155
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 199.1876974105835
+time/evaluation: 79.05654096603394
+training/train_loss_mean: 168.0696762084961
+training/train_loss_std: 56.44259842389618
+training/learning_rate: 5.01e-06
+training/action_error: 0.5582582354545593
+training/waypoint_error: 77.36668395996094
+	Iteration: 2
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 3
+time/training: 18.514413356781006
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 297.7808675765991
+time/evaluation: 80.0773549079895
+training/train_loss_mean: 26.224027437210083
+training/train_loss_std: 20.573773155665148
+training/learning_rate: 7.51e-06
+training/action_error: 0.3704601228237152
+training/waypoint_error: 4.5376763343811035
+	Iteration: 3
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 4
+time/training: 17.792487144470215
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 394.4835693836212
+time/evaluation: 78.90879940986633
+training/train_loss_mean: 3.49528516292572
+training/train_loss_std: 0.7813678371500395
+training/learning_rate: 1.001e-05
+training/action_error: 0.32306432723999023
+training/waypoint_error: 1.9615592956542969
+	Iteration: 4
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 5
+time/training: 17.35720920562744
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 490.141300201416
+time/evaluation: 78.29891538619995
+training/train_loss_mean: 2.2796559653282165
+training/train_loss_std: 0.4178555620921879
+training/learning_rate: 1.2509999999999999e-05
+training/action_error: 0.2897416949272156
+training/waypoint_error: 1.398973822593689
+	Iteration: 5
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 6
+time/training: 17.781610012054443
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 585.8148744106293
+time/evaluation: 77.89081192016602
+training/train_loss_mean: 1.8421705870628358
+training/train_loss_std: 0.3817432533502896
+training/learning_rate: 1.5010000000000002e-05
+training/action_error: 0.27085256576538086
+training/waypoint_error: 1.0895578861236572
+	Iteration: 6
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 7
+time/training: 18.004100799560547
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 681.0233526229858
+time/evaluation: 77.20313620567322
+training/train_loss_mean: 1.5887728204727174
+training/train_loss_std: 0.41422775164974235
+training/learning_rate: 1.751e-05
+training/action_error: 0.25826749205589294
+training/waypoint_error: 1.3408163785934448
+	Iteration: 7
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 8
+time/training: 19.502830028533936
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 777.5574374198914
+time/evaluation: 77.02979612350464
+training/train_loss_mean: 1.3898600387573241
+training/train_loss_std: 0.341128816702711
+training/learning_rate: 2.001e-05
+training/action_error: 0.24413979053497314
+training/waypoint_error: 0.5720983147621155
+	Iteration: 8
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 9
+time/training: 20.21927833557129
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 875.5678701400757
+time/evaluation: 77.78988146781921
+training/train_loss_mean: 1.2520095133781433
+training/train_loss_std: 0.3356357419982621
+training/learning_rate: 2.251e-05
+training/action_error: 0.2402259111404419
+training/waypoint_error: 0.9771754741668701
+	Iteration: 9
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 10
+time/training: 17.058856964111328
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 973.3776204586029
+time/evaluation: 80.74965286254883
+training/train_loss_mean: 1.1808038194179535
+training/train_loss_std: 0.3589033003372103
+training/learning_rate: 2.501e-05
+training/action_error: 0.2418503761291504
+training/waypoint_error: 0.6228387951850891
+	Iteration: 10
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 11
+time/training: 18.152454376220703
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 1070.0477542877197
+time/evaluation: 78.51644730567932
+training/train_loss_mean: 1.1042718920707704
+training/train_loss_std: 0.31832867939349296
+training/learning_rate: 2.7510000000000003e-05
+training/action_error: 0.21845144033432007
+training/waypoint_error: 0.9906519651412964
+	Iteration: 11
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 12
+time/training: 20.428069591522217
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 1169.0715291500092
+time/evaluation: 78.5944344997406
+training/train_loss_mean: 1.0039023418426514
+training/train_loss_std: 0.319782050275997
+training/learning_rate: 3.001e-05
+training/action_error: 0.21839101612567902
+training/waypoint_error: 1.1847394704818726
+	Iteration: 12
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 13
+time/training: 17.482579946517944
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 1264.8157348632812
+time/evaluation: 78.26037073135376
+training/train_loss_mean: 0.9994444489479065
+training/train_loss_std: 0.29676274436573463
+training/learning_rate: 3.251e-05
+training/action_error: 0.21035462617874146
+training/waypoint_error: 0.415479838848114
+	Iteration: 13
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 14
+time/training: 21.296733617782593
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 1361.954427242279
+time/evaluation: 75.84071660041809
+training/train_loss_mean: 0.8817391991615295
+training/train_loss_std: 0.28832135251503144
+training/learning_rate: 3.5010000000000005e-05
+training/action_error: 0.22393673658370972
+training/waypoint_error: 0.9711089730262756
+	Iteration: 14
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 15
+time/training: 20.15845274925232
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 1460.0734050273895
+time/evaluation: 77.95878624916077
+training/train_loss_mean: 0.8757660248279572
+training/train_loss_std: 0.30452162844308206
+training/learning_rate: 3.751e-05
+training/action_error: 0.210738867521286
+training/waypoint_error: 0.3282349407672882
+	Iteration: 15
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 16
+time/training: 22.784670114517212
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 1558.9051690101624
+time/evaluation: 76.04560112953186
+training/train_loss_mean: 0.7965032925605774
+training/train_loss_std: 0.2688881719524394
+training/learning_rate: 4.0010000000000005e-05
+training/action_error: 0.2166028916835785
+training/waypoint_error: 0.7401160001754761
+	Iteration: 16
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 17
+time/training: 21.974134922027588
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 1661.714067697525
+time/evaluation: 80.83336305618286
+training/train_loss_mean: 0.7852666625976562
+training/train_loss_std: 0.2865338629868267
+training/learning_rate: 4.251e-05
+training/action_error: 0.19404582679271698
+training/waypoint_error: 0.6072269082069397
+	Iteration: 17
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 18
+time/training: 21.099246740341187
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 1758.490671157837
+time/evaluation: 75.6761064529419
+training/train_loss_mean: 0.7472020401954651
+training/train_loss_std: 0.29439602135382203
+training/learning_rate: 4.5010000000000004e-05
+training/action_error: 0.21222253143787384
+training/waypoint_error: 0.4913956820964813
+	Iteration: 18
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 19
+time/training: 19.65239191055298
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 1859.4424366950989
+time/evaluation: 81.29788851737976
+training/train_loss_mean: 0.76519695353508
+training/train_loss_std: 0.2908739763017886
+training/learning_rate: 4.7510000000000004e-05
+training/action_error: 0.2035660743713379
+training/waypoint_error: 0.738513708114624
+	Iteration: 19
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 20
+time/training: 17.450016498565674
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 1953.8603684902191
+time/evaluation: 76.96601033210754
+training/train_loss_mean: 0.6951623331308365
+training/train_loss_std: 0.28955627034273473
+training/learning_rate: 5.0010000000000004e-05
+training/action_error: 0.19668251276016235
+training/waypoint_error: 0.22687247395515442
+	Iteration: 20
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 21
+time/training: 16.827452659606934
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 2051.589015483856
+time/evaluation: 80.89996695518494
+training/train_loss_mean: 0.6804015327692032
+training/train_loss_std: 0.28920273541012137
+training/learning_rate: 5.2510000000000004e-05
+training/action_error: 0.19611135125160217
+training/waypoint_error: 0.2915624678134918
+	Iteration: 21
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 22
+time/training: 16.724435329437256
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 2146.4789073467255
+time/evaluation: 78.1642198562622
+training/train_loss_mean: 0.6450212224721908
+training/train_loss_std: 0.23862772827119377
+training/learning_rate: 5.5010000000000004e-05
+training/action_error: 0.1870047003030777
+training/waypoint_error: 0.9039373397827148
+	Iteration: 22
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 23
+time/training: 17.43589472770691
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 2246.5494771003723
+time/evaluation: 82.63342642784119
+training/train_loss_mean: 0.6258652384281158
+training/train_loss_std: 0.2642684469594402
+training/learning_rate: 5.7509999999999997e-05
+training/action_error: 0.1883983016014099
+training/waypoint_error: 0.20449510216712952
+	Iteration: 23
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 24
+time/training: 17.150285959243774
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 2341.667729139328
+time/evaluation: 77.96673822402954
+training/train_loss_mean: 0.6324829250574112
+training/train_loss_std: 0.278744074126362
+training/learning_rate: 6.0009999999999996e-05
+training/action_error: 0.18846219778060913
+training/waypoint_error: 0.4623267352581024
+	Iteration: 24
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 25
+time/training: 21.615485191345215
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 2442.1510989665985
+time/evaluation: 78.8665862083435
+training/train_loss_mean: 0.6112923257350922
+training/train_loss_std: 0.2714794585546576
+training/learning_rate: 6.251e-05
+training/action_error: 0.18155497312545776
+training/waypoint_error: 0.2023550122976303
+	Iteration: 25
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 26
+time/training: 20.483351230621338
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 2542.4460990428925
+time/evaluation: 79.81031537055969
+training/train_loss_mean: 0.6201284559965133
+training/train_loss_std: 0.3011018025504924
+training/learning_rate: 6.501e-05
+training/action_error: 0.1915011703968048
+training/waypoint_error: 0.6666465997695923
+	Iteration: 26
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 27
+time/training: 22.466079711914062
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 2640.4708082675934
+time/evaluation: 75.55684423446655
+training/train_loss_mean: 0.5942601240873336
+training/train_loss_std: 0.2977605348370942
+training/learning_rate: 6.751000000000001e-05
+training/action_error: 0.17995156347751617
+training/waypoint_error: 1.6202632188796997
+	Iteration: 27
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 28
+time/training: 22.063612461090088
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 2742.8273632526398
+time/evaluation: 80.29132437705994
+training/train_loss_mean: 0.5716108117103577
+training/train_loss_std: 0.247267711900254
+training/learning_rate: 7.001e-05
+training/action_error: 0.1786431223154068
+training/waypoint_error: 0.3058009743690491
+	Iteration: 28
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 29
+time/training: 19.83464217185974
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 2839.0969681739807
+time/evaluation: 76.43373346328735
+training/train_loss_mean: 0.5579079906940461
+training/train_loss_std: 0.2679985847291049
+training/learning_rate: 7.251e-05
+training/action_error: 0.17743268609046936
+training/waypoint_error: 0.17228259146213531
+	Iteration: 29
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 30
+time/training: 20.173187494277954
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 2941.1699934005737
+time/evaluation: 81.89860796928406
+training/train_loss_mean: 0.5768394031524658
+training/train_loss_std: 0.2917438666985243
+training/learning_rate: 7.501e-05
+training/action_error: 0.17664606869220734
+training/waypoint_error: 0.7723003625869751
+	Iteration: 30
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 31
+time/training: 18.059502124786377
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 3036.7753188610077
+time/evaluation: 77.54463720321655
+training/train_loss_mean: 0.5242522662878036
+training/train_loss_std: 0.2372780854995977
+training/learning_rate: 7.751000000000001e-05
+training/action_error: 0.17078079283237457
+training/waypoint_error: 0.1652451604604721
+	Iteration: 31
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 32
+time/training: 18.315747261047363
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 3136.113057374954
+time/evaluation: 81.02032446861267
+training/train_loss_mean: 0.539053005695343
+training/train_loss_std: 0.26959201300121083
+training/learning_rate: 8.001e-05
+training/action_error: 0.18221694231033325
+training/waypoint_error: 0.404628723859787
+	Iteration: 32
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 33
+time/training: 17.231916904449463
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 3231.4610612392426
+time/evaluation: 78.11476612091064
+training/train_loss_mean: 0.5120300287008286
+training/train_loss_std: 0.24783469297500998
+training/learning_rate: 8.251e-05
+training/action_error: 0.1702565997838974
+training/waypoint_error: 0.1351262331008911
+	Iteration: 33
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 34
+time/training: 18.1299250125885
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 3334.494538784027
+time/evaluation: 84.9021897315979
+training/train_loss_mean: 0.5036910469532013
+training/train_loss_std: 0.26369739671842884
+training/learning_rate: 8.501e-05
+training/action_error: 0.16731125116348267
+training/waypoint_error: 0.2761622965335846
+	Iteration: 34
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 35
+time/training: 17.435290098190308
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 3430.784230709076
+time/evaluation: 78.85313963890076
+training/train_loss_mean: 0.545266284584999
+training/train_loss_std: 0.2689080772329224
+training/learning_rate: 8.751000000000001e-05
+training/action_error: 0.1705753654241562
+training/waypoint_error: 0.2968481183052063
+	Iteration: 35
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 36
+time/training: 21.602070331573486
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 3532.790226459503
+time/evaluation: 80.40269231796265
+training/train_loss_mean: 0.5108834060430527
+training/train_loss_std: 0.23454976555919335
+training/learning_rate: 9.001e-05
+training/action_error: 0.17362827062606812
+training/waypoint_error: 0.12016017735004425
+	Iteration: 36
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 37
+time/training: 17.78876566886902
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 3635.172142982483
+time/evaluation: 84.59195613861084
+training/train_loss_mean: 0.5462098129987717
+training/train_loss_std: 0.27369715470598166
+training/learning_rate: 9.251000000000001e-05
+training/action_error: 0.16908448934555054
+training/waypoint_error: 0.5631409883499146
+	Iteration: 37
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 38
+time/training: 17.070116758346558
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 3730.6256778240204
+time/evaluation: 78.3815598487854
+training/train_loss_mean: 0.5051999982595444
+training/train_loss_std: 0.26446188315533825
+training/learning_rate: 9.501e-05
+training/action_error: 0.157306969165802
+training/waypoint_error: 0.9090838432312012
+	Iteration: 38
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 39
+time/training: 18.13767981529236
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 3830.852795600891
+time/evaluation: 82.08815169334412
+training/train_loss_mean: 0.5225622687339783
+training/train_loss_std: 0.27797334428382564
+training/learning_rate: 9.751e-05
+training/action_error: 0.1578000783920288
+training/waypoint_error: 0.4507501423358917
+	Iteration: 39
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 40
+time/training: 17.361328601837158
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 3941.4532935619354
+time/evaluation: 93.23787426948547
+training/train_loss_mean: 0.49166699838638306
+training/train_loss_std: 0.27577390225991344
+training/learning_rate: 0.0001
+training/action_error: 0.16392068564891815
+training/waypoint_error: 0.11249425262212753
+	Iteration: 40
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 41
+time/training: 26.352288961410522
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 4126.971390247345
+time/evaluation: 159.1645700931549
+training/train_loss_mean: 0.5041436883211136
+training/train_loss_std: 0.263516952045411
+training/learning_rate: 9.638665235925895e-05
+training/action_error: 0.16917656362056732
+training/waypoint_error: 0.1230362206697464
+	Iteration: 41
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 42
+time/training: 27.129973649978638
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 4315.591388225555
+time/evaluation: 161.48883771896362
+training/train_loss_mean: 0.4895115951299667
+training/train_loss_std: 0.264352831452378
+training/learning_rate: 9.303443034197486e-05
+training/action_error: 0.16209779679775238
+training/waypoint_error: 0.12404487282037735
+	Iteration: 42
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 43
+time/training: 29.45460557937622
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 4496.9995176792145
+time/evaluation: 151.95113348960876
+training/train_loss_mean: 0.48408837503194807
+training/train_loss_std: 0.26297724716008614
+training/learning_rate: 8.992446319503865e-05
+training/action_error: 0.14848405122756958
+training/waypoint_error: 0.21330170333385468
+	Iteration: 43
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 44
+time/training: 37.97506046295166
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 4693.309456825256
+time/evaluation: 158.33336114883423
+training/train_loss_mean: 0.4814530293941498
+training/train_loss_std: 0.2548232443518835
+training/learning_rate: 8.703924389716573e-05
+training/action_error: 0.15787243843078613
+training/waypoint_error: 0.12181761860847473
+	Iteration: 44
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 45
+time/training: 36.77502703666687
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 4889.26997923851
+time/evaluation: 159.18425989151
+training/train_loss_mean: 0.5062814226746559
+training/train_loss_std: 0.2931560526148578
+training/learning_rate: 8.43625306061526e-05
+training/action_error: 0.16622638702392578
+training/waypoint_error: 0.28146904706954956
+	Iteration: 45
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 46
+time/training: 30.876296997070312
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 5074.886758327484
+time/evaluation: 154.7392659187317
+training/train_loss_mean: 0.46937996411323546
+training/train_loss_std: 0.26095463834540916
+training/learning_rate: 8.187925522823992e-05
+training/action_error: 0.16354934871196747
+training/waypoint_error: 0.1071513369679451
+	Iteration: 46
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 47
+time/training: 26.948625326156616
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 5272.560614347458
+time/evaluation: 170.72372460365295
+training/train_loss_mean: 0.49518344283103943
+training/train_loss_std: 0.2576555262444196
+training/learning_rate: 7.957543859488907e-05
+training/action_error: 0.1508452147245407
+training/waypoint_error: 0.2135675549507141
+	Iteration: 47
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 48
+time/training: 27.851382970809937
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 5465.4719796180725
+time/evaluation: 165.05874943733215
+training/train_loss_mean: 0.45349574273824694
+training/train_loss_std: 0.25286432806837783
+training/learning_rate: 7.743811176947458e-05
+training/action_error: 0.15708115696907043
+training/waypoint_error: 0.11086761206388474
+	Iteration: 48
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 49
+time/training: 28.751739740371704
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 5643.639700889587
+time/evaluation: 149.4147264957428
+training/train_loss_mean: 0.4952545677423477
+training/train_loss_std: 0.2875322633809838
+training/learning_rate: 7.545524304090217e-05
+training/action_error: 0.1566327065229416
+training/waypoint_error: 0.2650887668132782
+	Iteration: 49
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 50
+time/training: 32.843384742736816
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 5841.0969414711
+time/evaluation: 164.6126046180725
+training/train_loss_mean: 0.429707370698452
+training/train_loss_std: 0.2515105811481221
+training/learning_rate: 7.361567019317548e-05
+training/action_error: 0.15892674028873444
+training/waypoint_error: 0.6067221164703369
+	Iteration: 50
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 51
+time/training: 34.39393424987793
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 6050.239413261414
+time/evaluation: 174.74728512763977
+training/train_loss_mean: 0.47511843746900556
+training/train_loss_std: 0.2824279059450872
+training/learning_rate: 7.190903766963489e-05
+training/action_error: 0.15631432831287384
+training/waypoint_error: 0.22653155028820038
+	Iteration: 51
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 52
+time/training: 31.362576961517334
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 6254.730338335037
+time/evaluation: 173.12709736824036
+training/train_loss_mean: 0.5010849150419235
+training/train_loss_std: 0.29903546457624436
+training/learning_rate: 7.032573827814523e-05
+training/action_error: 0.144760861992836
+training/waypoint_error: 0.7089616060256958
+	Iteration: 52
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 53
+time/training: 35.607041358947754
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 6469.0324029922485
+time/evaluation: 178.69280409812927
+training/train_loss_mean: 0.46122748899459837
+training/train_loss_std: 0.2802413214403232
+training/learning_rate: 6.885685910907211e-05
+training/action_error: 0.15491841733455658
+training/waypoint_error: 0.5224868059158325
+	Iteration: 53
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 54
+time/training: 26.238560914993286
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 6664.287884950638
+time/evaluation: 169.015615940094
+training/train_loss_mean: 0.44730569100379947
+training/train_loss_std: 0.23993680148262359
+training/learning_rate: 6.749413136160107e-05
+training/action_error: 0.1498109996318817
+training/waypoint_error: 0.11359528452157974
+	Iteration: 54
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 55
+time/training: 26.411803245544434
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 6862.847896814346
+time/evaluation: 172.14693880081177
+training/train_loss_mean: 0.4690700027346611
+training/train_loss_std: 0.28416127954956993
+training/learning_rate: 6.622988379595595e-05
+training/action_error: 0.1559135913848877
+training/waypoint_error: 0.0826137363910675
+	Iteration: 55
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 56
+time/training: 29.04637598991394
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 7065.807585716248
+time/evaluation: 173.91207551956177
+training/train_loss_mean: 0.47445376676321027
+training/train_loss_std: 0.27094874274827
+training/learning_rate: 6.505699954948358e-05
+training/action_error: 0.14887955784797668
+training/waypoint_error: 0.08414079248905182
+	Iteration: 56
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 57
+time/training: 29.317986249923706
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 7251.300422668457
+time/evaluation: 156.17335200309753
+training/train_loss_mean: 0.42513294297456744
+training/train_loss_std: 0.23558890344383251
+training/learning_rate: 6.396887607350826e-05
+training/action_error: 0.14567454159259796
+training/waypoint_error: 0.08215802162885666
+	Iteration: 57
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 58
+time/training: 30.240567445755005
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 7421.694522619247
+time/evaluation: 140.15173053741455
+training/train_loss_mean: 0.44865498483181
+training/train_loss_std: 0.26530048465415135
+training/learning_rate: 6.295938796542795e-05
+training/action_error: 0.15391047298908234
+training/waypoint_error: 0.0833018571138382
+	Iteration: 58
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 59
+time/training: 17.129624605178833
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 7516.0102891922
+time/evaluation: 77.18489265441895
+training/train_loss_mean: 0.45241835725307467
+training/train_loss_std: 0.2490251893524328
+training/learning_rate: 6.202285248682142e-05
+training/action_error: 0.1566205471754074
+training/waypoint_error: 0.0764150470495224
+	Iteration: 59
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 60
+time/training: 18.35425353050232
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 7616.079711675644
+time/evaluation: 81.7139344215393
+training/train_loss_mean: 0.45475526744127276
+training/train_loss_std: 0.2838683492115985
+training/learning_rate: 6.115399757345673e-05
+training/action_error: 0.15490467846393585
+training/waypoint_error: 0.26248306035995483
+	Iteration: 60
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 61
+time/training: 18.05767297744751
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 7715.1083471775055
+time/evaluation: 80.96957468986511
+training/train_loss_mean: 0.42024794161319734
+training/train_loss_std: 0.24778362094579445
+training/learning_rate: 6.03479321571191e-05
+training/action_error: 0.15568587183952332
+training/waypoint_error: 0.45763617753982544
+	Iteration: 61
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 62
+time/training: 17.149739027023315
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 7811.877019643784
+time/evaluation: 79.61726808547974
+training/train_loss_mean: 0.4499104072451591
+training/train_loss_std: 0.2495086105775187
+training/learning_rate: 5.960011863218961e-05
+training/action_error: 0.15783151984214783
+training/waypoint_error: 0.08532549440860748
+	Iteration: 62
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 63
+time/training: 17.61559748649597
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 7909.175776004791
+time/evaluation: 79.68192267417908
+training/train_loss_mean: 0.43698905789852144
+training/train_loss_std: 0.25819942106206073
+training/learning_rate: 5.890634731198048e-05
+training/action_error: 0.15303820371627808
+training/waypoint_error: 0.11925766617059708
+	Iteration: 63
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 64
+time/training: 18.260513305664062
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 8013.416842222214
+time/evaluation: 85.97932124137878
+training/train_loss_mean: 0.4606299203634262
+training/train_loss_std: 0.2675921509441996
+training/learning_rate: 5.8262712731033174e-05
+training/action_error: 0.1460198312997818
+training/waypoint_error: 0.799796462059021
+	Iteration: 64
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 65
+time/training: 17.26251745223999
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 8113.0035235881805
+time/evaluation: 82.32274603843689
+training/train_loss_mean: 0.44228656446933745
+training/train_loss_std: 0.2625928053635162
+training/learning_rate: 5.766559165997718e-05
+training/action_error: 0.1437021642923355
+training/waypoint_error: 0.07144144922494888
+	Iteration: 65
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 66
+time/training: 17.551661014556885
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 8210.280242204666
+time/evaluation: 79.72370767593384
+training/train_loss_mean: 0.4394794420003891
+training/train_loss_std: 0.2799923107516663
+training/learning_rate: 5.711162270918792e-05
+training/action_error: 0.14507721364498138
+training/waypoint_error: 0.07111009955406189
+	Iteration: 66
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 67
+time/training: 17.792086124420166
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 8307.578436851501
+time/evaluation: 79.5044481754303
+training/train_loss_mean: 0.4222601382136345
+training/train_loss_std: 0.24350573773942066
+training/learning_rate: 5.659768740642623e-05
+training/action_error: 0.1533772498369217
+training/waypoint_error: 0.22734054923057556
+	Iteration: 67
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 68
+time/training: 18.05311155319214
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 8404.614955425262
+time/evaluation: 78.98205828666687
+training/train_loss_mean: 0.42475604796409605
+training/train_loss_std: 0.25900074404125445
+training/learning_rate: 5.612089264193908e-05
+training/action_error: 0.1394905000925064
+training/waypoint_error: 1.0393712520599365
+	Iteration: 68
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 69
+time/training: 18.001789093017578
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 8506.984137773514
+time/evaluation: 84.36614346504211
+training/train_loss_mean: 0.44102547204494474
+training/train_loss_std: 0.28379603204368975
+training/learning_rate: 5.567855438219949e-05
+training/action_error: 0.14635656774044037
+training/waypoint_error: 0.07830952852964401
+	Iteration: 69
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 70
+time/training: 17.152881145477295
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 8609.423519611359
+time/evaluation: 85.28494644165039
+training/train_loss_mean: 0.423304111123085
+training/train_loss_std: 0.2511657324708854
+training/learning_rate: 5.5268182560604675e-05
+training/action_error: 0.14330388605594635
+training/waypoint_error: 0.0748201534152031
+	Iteration: 70
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 71
+time/training: 18.386003732681274
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 8709.544448137283
+time/evaluation: 81.73302102088928
+training/train_loss_mean: 0.43986728698015215
+training/train_loss_std: 0.272123514206661
+training/learning_rate: 5.488746706007759e-05
+training/action_error: 0.14429022371768951
+training/waypoint_error: 0.07616113871335983
+	Iteration: 71
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 72
+time/training: 18.815877199172974
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 8809.816436767578
+time/evaluation: 81.45486068725586
+training/train_loss_mean: 0.4790271599292755
+training/train_loss_std: 0.27467459490217555
+training/learning_rate: 5.453426470866297e-05
+training/action_error: 0.15375564992427826
+training/waypoint_error: 0.07502764463424683
+	Iteration: 72
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 73
+time/training: 18.999775171279907
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 8911.54909992218
+time/evaluation: 82.73158836364746
+training/train_loss_mean: 0.47766468608379364
+training/train_loss_std: 0.29960294424137424
+training/learning_rate: 5.420658721491212e-05
+training/action_error: 0.15001565217971802
+training/waypoint_error: 0.16422341763973236
+	Iteration: 73
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 74
+time/training: 20.483673334121704
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 9008.525149822235
+time/evaluation: 76.49100136756897
+training/train_loss_mean: 0.4437940859794617
+training/train_loss_std: 0.26403135942481337
+training/learning_rate: 5.390258997514064e-05
+training/action_error: 0.1451781690120697
+training/waypoint_error: 0.3955286145210266
+	Iteration: 74
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 75
+time/training: 21.66731309890747
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 9107.573566198349
+time/evaluation: 77.37922716140747
+training/train_loss_mean: 0.42131049793958664
+training/train_loss_std: 0.26497284586933995
+training/learning_rate: 5.362056168955155e-05
+training/action_error: 0.14484228193759918
+training/waypoint_error: 0.2547805607318878
+	Iteration: 75
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 76
+time/training: 18.633548736572266
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 9205.060374975204
+time/evaluation: 78.85204720497131
+training/train_loss_mean: 0.4109448825120926
+training/train_loss_std: 0.24571938175197752
+training/learning_rate: 5.3358914728769584e-05
+training/action_error: 0.13688646256923676
+training/waypoint_error: 0.06840196996927261
+	Iteration: 76
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 77
+time/training: 18.66708016395569
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 9301.137755393982
+time/evaluation: 77.40906023979187
+training/train_loss_mean: 0.43922634291648865
+training/train_loss_std: 0.26131045202317915
+training/learning_rate: 5.3116176196556576e-05
+training/action_error: 0.14616714417934418
+training/waypoint_error: 0.06590698659420013
+	Iteration: 77
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 78
+time/training: 18.12413740158081
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 9400.675461292267
+time/evaluation: 81.4121630191803
+training/train_loss_mean: 0.3975488538146019
+training/train_loss_std: 0.23240343382211506
+training/learning_rate: 5.2890979638397357e-05
+training/action_error: 0.15378917753696442
+training/waypoint_error: 0.07967249304056168
+	Iteration: 78
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 79
+time/training: 16.92134976387024
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 9500.722562074661
+time/evaluation: 83.12453579902649
+training/train_loss_mean: 0.4251046283245087
+training/train_loss_std: 0.2774059195829258
+training/learning_rate: 5.268205734928069e-05
+training/action_error: 0.13031911849975586
+training/waypoint_error: 0.4718114733695984
+	Iteration: 79
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 80
+time/training: 17.95889139175415
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 9598.914843082428
+time/evaluation: 80.23186707496643
+training/train_loss_mean: 0.42206865042448044
+training/train_loss_std: 0.2710111079293892
+training/learning_rate: 5.248823323737358e-05
+training/action_error: 0.137978658080101
+training/waypoint_error: 0.06435547024011612
+	Iteration: 80
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 81
+time/training: 18.1099693775177
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 9697.382673978806
+time/evaluation: 80.35659074783325
+training/train_loss_mean: 0.45154780888557433
+training/train_loss_std: 0.28435802221516254
+training/learning_rate: 5.230841620341603e-05
+training/action_error: 0.1486274003982544
+training/waypoint_error: 0.9444568157196045
+	Iteration: 81
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 82
+time/training: 17.857648611068726
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 9794.95147895813
+time/evaluation: 79.70993709564209
+training/train_loss_mean: 0.43850407654047013
+training/train_loss_std: 0.25130327889669596
+training/learning_rate: 5.214159399856679e-05
+training/action_error: 0.14153049886226654
+training/waypoint_error: 0.2111719250679016
+	Iteration: 82
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 83
+time/training: 18.492341995239258
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 9892.945176839828
+time/evaluation: 79.50014638900757
+training/train_loss_mean: 0.4310073100924492
+training/train_loss_std: 0.2707093109162959
+training/learning_rate: 5.198682752612386e-05
+training/action_error: 0.14197462797164917
+training/waypoint_error: 0.06778907775878906
+	Iteration: 83
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 84
+time/training: 20.08865451812744
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 9996.232966661453
+time/evaluation: 83.19778990745544
+training/train_loss_mean: 0.437322336435318
+training/train_loss_std: 0.27001754952824547
+training/learning_rate: 5.184324555504229e-05
+training/action_error: 0.13893623650074005
+training/waypoint_error: 0.0725884735584259
+	Iteration: 84
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 85
+time/training: 19.382229328155518
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 10092.845395326614
+time/evaluation: 77.22890901565552
+training/train_loss_mean: 0.4165810852646828
+training/train_loss_std: 0.2357551156267316
+training/learning_rate: 5.171003981548992e-05
+training/action_error: 0.1327475607395172
+training/waypoint_error: 0.713458776473999
+	Iteration: 85
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 86
+time/training: 19.717469215393066
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 10190.07881975174
+time/evaluation: 77.51475501060486
+training/train_loss_mean: 0.4172079102396965
+training/train_loss_std: 0.2667167268735185
+training/learning_rate: 5.158646044883244e-05
+training/action_error: 0.14220184087753296
+training/waypoint_error: 0.5727177262306213
+	Iteration: 86
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 87
+time/training: 16.844619750976562
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 10283.359430551529
+time/evaluation: 76.43477249145508
+training/train_loss_mean: 0.42733771204948423
+training/train_loss_std: 0.27112830654864256
+training/learning_rate: 5.147181178643409e-05
+training/action_error: 0.1417378932237625
+training/waypoint_error: 0.06845679879188538
+	Iteration: 87
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 88
+time/training: 15.867030620574951
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 10372.2134141922
+time/evaluation: 72.98572301864624
+training/train_loss_mean: 0.4320230710506439
+training/train_loss_std: 0.25785273743829124
+training/learning_rate: 5.1365448433511556e-05
+training/action_error: 0.14079831540584564
+training/waypoint_error: 0.06410369277000427
+	Iteration: 88
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 89
+time/training: 16.154331922531128
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 10470.737721443176
+time/evaluation: 82.36876702308655
+training/train_loss_mean: 0.4136762618422508
+training/train_loss_std: 0.277212350101429
+training/learning_rate: 5.1266771635995904e-05
+training/action_error: 0.13159377872943878
+training/waypoint_error: 0.19207589328289032
+	Iteration: 89
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 90
+time/training: 17.000309228897095
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 10565.826272010803
+time/evaluation: 78.08704590797424
+training/train_loss_mean: 0.4037385954260826
+training/train_loss_std: 0.23861514206646886
+training/learning_rate: 5.117522590995023e-05
+training/action_error: 0.13831259310245514
+training/waypoint_error: 0.0703275203704834
+	Iteration: 90
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 91
+time/training: 16.016517162322998
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 10655.401030540466
+time/evaluation: 73.55693650245667
+training/train_loss_mean: 0.4571222960948944
+training/train_loss_std: 0.26394872217544463
+training/learning_rate: 5.109029591456911e-05
+training/action_error: 0.13771118223667145
+training/waypoint_error: 0.05828475579619408
+	Iteration: 91
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 92
+time/training: 16.573222637176514
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 10745.998943567276
+time/evaluation: 74.02345323562622
+training/train_loss_mean: 0.4380826639533043
+training/train_loss_std: 0.2747109569456083
+training/learning_rate: 5.101150355115675e-05
+training/action_error: 0.14066432416439056
+training/waypoint_error: 0.2150060087442398
+	Iteration: 92
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 93
+time/training: 16.774423837661743
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 10835.470276594162
+time/evaluation: 72.6954391002655
+training/train_loss_mean: 0.43781146162748336
+training/train_loss_std: 0.2785080388420852
+training/learning_rate: 5.0938405271753276e-05
+training/action_error: 0.14301393926143646
+training/waypoint_error: 0.09042076766490936
+	Iteration: 93
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 94
+time/training: 15.990576267242432
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 10932.128138542175
+time/evaluation: 80.66604661941528
+training/train_loss_mean: 0.4072533030509949
+training/train_loss_std: 0.2730217971026402
+training/learning_rate: 5.087058958225831e-05
+training/action_error: 0.14231902360916138
+training/waypoint_error: 0.19805195927619934
+	Iteration: 94
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 95
+time/training: 18.254460334777832
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 11037.738808870316
+time/evaluation: 87.35481452941895
+training/train_loss_mean: 0.3911534647941589
+training/train_loss_std: 0.22477504901249148
+training/learning_rate: 5.080767472599617e-05
+training/action_error: 0.13664168119430542
+training/waypoint_error: 0.09617637097835541
+	Iteration: 95
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 96
+time/training: 18.3247549533844
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 11131.327147722244
+time/evaluation: 75.26199507713318
+training/train_loss_mean: 0.4142490926384926
+training/train_loss_std: 0.25830497969558114
+training/learning_rate: 5.074930653468288e-05
+training/action_error: 0.14115707576274872
+training/waypoint_error: 0.061350125819444656
+	Iteration: 96
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 97
+time/training: 17.1720290184021
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 11231.786374092102
+time/evaluation: 83.28571152687073
+training/train_loss_mean: 0.40217174363136293
+training/train_loss_std: 0.23206614505775244
+training/learning_rate: 5.069515643469712e-05
+training/action_error: 0.14307986199855804
+training/waypoint_error: 0.3301834464073181
+	Iteration: 97
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 98
+time/training: 16.81030797958374
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 11322.070233345032
+time/evaluation: 73.47233557701111
+training/train_loss_mean: 0.43937440079450607
+training/train_loss_std: 0.2861443424553789
+training/learning_rate: 5.064491959743194e-05
+training/action_error: 0.13768193125724792
+training/waypoint_error: 0.05930498242378235
+	Iteration: 98
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 99
+time/training: 16.0211284160614
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 11418.531896352768
+time/evaluation: 80.43931460380554
+training/train_loss_mean: 0.3914741646647453
+training/train_loss_std: 0.2562580540176318
+training/learning_rate: 5.059831322331497e-05
+training/action_error: 0.13048039376735687
+training/waypoint_error: 0.05000167712569237
+	Iteration: 99
+step: 0
+step: 50
+step: 100
+step: 150
+step: 200
+All returns: [0.0]
+All returns: [0.0, 0.0]
+All returns: [0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+All returns: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+================================================================================
+Iteration 100
+time/training: 17.245585680007935
+evaluation/target_0_return_mean: 0.0
+evaluation/target_0_return_std: 0.0
+evaluation/target_0_length_mean: 1000.0
+evaluation/target_0_length_std: 0.0
+time/total: 11511.459044456482
+time/evaluation: 75.68033051490784
+training/train_loss_mean: 0.3907382216453552
+training/train_loss_std: 0.24850282412044952
+training/learning_rate: 5.055507494983719e-05
+training/action_error: 0.14163720607757568
+training/waypoint_error: 0.05969409644603729

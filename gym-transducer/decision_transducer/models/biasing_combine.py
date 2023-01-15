@@ -12,6 +12,7 @@ class BiasCombineNet(torch.nn.Module):
         self.w3 = nn.Linear(2*hidden_size, hidden_size)
         self.tanh = nn.Tanh()
         self.gelu = nn.GELU()
+        self.sigmoid = nn.Sigmoid()
         self.dropout1 = torch.nn.Dropout(0.1)
         self.dropout2 = torch.nn.Dropout(0.1)
         self.norm1 = torch.nn.LayerNorm(hidden_size)
@@ -47,6 +48,27 @@ class BiasCombineNet(torch.nn.Module):
 
         fuse = self.w5(data_0) + self.w6( data_1 ) 
         return fuse
+
+    def forward_23(self, data, rtgs, attn_mask, pad_mask):
+        """
+        B1: cross attention. Query: state or action. Key/values: rtgs
+        C2.3: Treat the biased representation as a kind of embedding and use Gate & add.
+        """
+        # pre-norm for data and rtg
+        data_0 = data # self.norm1(data)
+        # rtgs = self.norm2(rtgs)
+        # data_0 = data
+        data_1, _ = self.attn(
+            query = data_0, # data,
+            key = rtgs,
+            value = rtgs,
+            key_padding_mask = pad_mask,
+            attn_mask = attn_mask
+            )
+        concat_features = torch.cat([data_1, data_0], dim = -1)
+        weight = self.sigmoid( self.w3( concat_features ) )
+        final = data + weight * data_1
+        return final
 
     def forward_22(self, data, rtgs, attn_mask, pad_mask):
         """

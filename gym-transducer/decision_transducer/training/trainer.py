@@ -20,7 +20,7 @@ class Trainer:
         self.diagnostics = dict()
         self.start_time = time.time()
 
-    def train_iteration(self, num_steps, iter_num=0, plot_dict=dict(), print_logs=False):
+    def train_iteration(self, num_steps, iter_num=0, plot_dict=dict(), print_logs=False, goal = False):
 
         train_losses = []
         logs = dict()
@@ -33,7 +33,11 @@ class Trainer:
             for _ in range(num_steps):
                 if _ % int(num_steps / times) == 0:
                     print("step:", _)
-                train_loss = self.train_step()
+                if goal:
+                    # with value from IQL in antmaze
+                    train_loss = self.train_step_goal()
+                else:
+                    train_loss = self.train_step()
                 train_losses.append(train_loss)
                 if self.scheduler is not None:
                     self.scheduler.step()

@@ -20,3 +20,33 @@ def set_seed(seed: int = 1) -> None:
     # Set a fixed value for the hash seed
     os.environ["PYTHONHASHSEED"] = str(seed)
     print(f"Random seed for training set as {seed}")
+
+def load_critic(env_name, device):
+    from critic import ValueCritic
+    SAVE = 'saved_model'
+    if env_name == 'antmaze-medium-play':
+        load_path = os.path.join('.', '..', '..', SAVE, env_name, 'value_s950000.pth' )
+    else:
+        assert False
+    critic = ValueCritic(29, 256, 3)
+    critic.load_state_dict(torch.load(load_path, map_location=torch.device(device) ))
+    return critic.to(device)
+
+def value_state(critic, states, device):
+
+    with torch.no_grad():
+        states = torch.tensor(states).to(device)
+        values = critic(states).detach().flatten().cpu().numpy()
+    stats = [ min(values), max(values)]
+    # assert False, f"{values}"
+    return values, stats
+
+def scale_value(large, small, value):
+    if value > large:
+        return 0.0
+    elif value < small:
+        return 1.0
+    else:
+        
+        return ( large - value ) / (large - small)
+

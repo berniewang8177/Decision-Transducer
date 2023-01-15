@@ -160,7 +160,8 @@ class DecisionTransducer(TrajectoryModel):
             elif self.c_mode == 'c21':
                 encoded_state = self.bias1.forward_21(encoded_state, encoded_rtg, causal_mask, attention_mask)
             else:
-                encoded_state = self.bias1.forward_20(encoded_state, encoded_rtg, causal_mask, attention_mask)
+                # c23: using Gate&add
+                encoded_state = self.bias1.forward_23(encoded_state, encoded_rtg, causal_mask, attention_mask)
 
             # bias state and also action
             if self.bias_mode == "b2":
@@ -169,7 +170,8 @@ class DecisionTransducer(TrajectoryModel):
                 elif self.c_mode == 'c21':
                     encoded_action = self.bias2.forward_21(encoded_action, encoded_rtg, causal_mask, attention_mask)
                 else:
-                    encoded_action = self.bias2.forward_20(encoded_action, encoded_rtg, causal_mask, attention_mask)
+                    # c23: using Gate&add
+                    encoded_action = self.bias2.forward_23(encoded_action, encoded_rtg, causal_mask, attention_mask)
         
         # join network
         if self.join_all == False:
