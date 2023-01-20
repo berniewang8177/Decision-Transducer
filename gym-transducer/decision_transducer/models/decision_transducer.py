@@ -154,17 +154,18 @@ class DecisionTransducer(TrajectoryModel):
         if self.bias_mode == "b0":
             pass
         else:
+            if self.bias_mode == "left" or self.bias_mode == "all":
             # bias state
-            if self.c_mode == 'c22':
-                encoded_state = self.bias1.forward_22(encoded_state, encoded_rtg, causal_mask, attention_mask)
-            elif self.c_mode == 'c21':
-                encoded_state = self.bias1.forward_21(encoded_state, encoded_rtg, causal_mask, attention_mask)
-            else:
-                # c23: using Gate&add
-                encoded_state = self.bias1.forward_23(encoded_state, encoded_rtg, causal_mask, attention_mask)
+                if self.c_mode == 'c22':
+                    encoded_state = self.bias1.forward_22(encoded_state, encoded_rtg, causal_mask, attention_mask)
+                elif self.c_mode == 'c21':
+                    encoded_state = self.bias1.forward_21(encoded_state, encoded_rtg, causal_mask, attention_mask)
+                else:
+                    # c23: using Gate&add
+                    encoded_state = self.bias1.forward_23(encoded_state, encoded_rtg, causal_mask, attention_mask)
 
             # bias state and also action
-            if self.bias_mode == "b2":
+            if self.bias_mode == "right" or self.bias_mode == "all":
                 if self.c_mode == 'c22':
                     encoded_action = self.bias2.forward_22(encoded_action, encoded_rtg, causal_mask, attention_mask)
                 elif self.c_mode == 'c21':

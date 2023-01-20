@@ -24,10 +24,14 @@ def set_seed(seed: int = 1) -> None:
 def load_critic(env_name, device):
     from critic import ValueCritic
     SAVE = 'saved_model'
-    if env_name == 'antmaze-medium-play':
+    
+    if env_name == 'antmaze-medium-play' or 'antmaze-medium-diverse' or 'antmaze-umaze':
         load_path = os.path.join('.', '..', '..', SAVE, env_name, 'value_s950000.pth' )
+    if env_name == 'antmaze-umaze-diverse':
+        load_path = os.path.join('.', '..', '..', SAVE, env_name, 'value_s1000000.pth' )
     else:
         assert False
+
     critic = ValueCritic(29, 256, 3)
     critic.load_state_dict(torch.load(load_path, map_location=torch.device(device) ))
     return critic.to(device)

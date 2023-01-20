@@ -58,7 +58,7 @@ def experiment(
     norm_mode = variant['norm_mode']
     c_mode = variant['comb']
     
-    group_name = f'{exp_prefix}-{env_name}-{dataset}' + f'-{bias_mode}-{norm_mode}'
+    group_name = f'{exp_prefix}-{env_name}-{dataset}' + f'-bias-{bias_mode}-{norm_mode}'
     if bias_mode != 'b0':
         group_name += f'-{c_mode}'
     train_seed = variant['seed']
@@ -67,20 +67,21 @@ def experiment(
     if env_name == 'hopper':
         env = gym.make('Hopper-v3')
         max_ep_len = 1000
-        env_targets = [3600, 1800]  
+        env_targets = [3600,]  
         # env_targets = [3000, 2400, 1200, 600]
         # env_targets = [6000, 4500, 3600, 2400, 1200, 600]
         scale = 1000.  # normalization for rewards/returns
     elif env_name == 'halfcheetah':
         env = gym.make('HalfCheetah-v3')
         max_ep_len = 1000
-        env_targets = [6000, 4000]
+        env_targets = [12000, 6000]
+        # env_targets = [6000, 4000]
         # env_targets = [12000,10000, 8000, 4000, 2000]
         scale = 1000.
     elif env_name == 'walker2d':
         env = gym.make('Walker2d-v3')
         max_ep_len = 1000
-        env_targets = [5000, 2500]
+        env_targets = [5000] #, 2500]
         
         scale = 1000.
     else:
@@ -279,11 +280,17 @@ def experiment(
         lr=variant['learning_rate'],
         weight_decay=variant['weight_decay'],
     )
-    lr_ratio = 0.5 
-    scheduler = torch.optim.lr_scheduler.LambdaLR(
-        optimizer,
-        lambda steps: min((steps+1)/warmup_steps, 1) if steps < warmup_steps else lr_ratio + (1-lr_ratio) * ( 0.9997 ** (steps-warmup_steps) )
-    )
+    if dataset == 'medium-expert':
+        scheduler = torch.optim.lr_scheduler.LambdaLR(
+            optimizer,
+            lambda steps: min((steps+1)/warmup_steps, 1) 
+        )
+    else:
+        lr_ratio = 0.5 
+        scheduler = torch.optim.lr_scheduler.LambdaLR(
+            optimizer,
+            lambda steps: min((steps+1)/warmup_steps, 1) if steps < warmup_steps else lr_ratio + (1-lr_ratio) * ( 0.9997 ** (steps-warmup_steps) )
+        )
     # scheduler = transformers.get_cosine_schedule_with_warmup(optimizer, num_warmup_steps = warmup_steps, num_training_steps = variant['num_steps_per_iter'] * variant['max_iters'])
 
     if model_type == 'dt':
@@ -344,7 +351,7 @@ if __name__ == '__main__':
     parser.add_argument('--load_model', type=str, default='NO')
     parser.add_argument('--save_model', type=str, default='NO')
 
-    parser.add_argument('--bias', type=str, default="b2")
+    parser.add_argument('--bias', type=str, default="all")
     parser.add_argument('--comb', type=str, default="c22")
     parser.add_argument('--norm_mode', type=str, default="n3")
     parser.add_argument('--modality_emb', type=int, default= 3)
@@ -367,4 +374,11 @@ if __name__ == '__main__':
     lr = vars(args)['learning_rate']
     set_seed(seed) 
 
-    experiment(f'DTD-{batch}-10k-warm-decay-{lr}-lr-prenorm-3-layer-encoders-{ norm_prefix }ln-postnorm-join-2head-emb-{modality_emb}', variant=vars(args))
+    # experiment(f'DTD-{batch}-10k-warm-decay-{lr}-lr-prenorm-3-layer-encoders-{ norm_prefix }ln-postnorm-join-2head-emb-{modality_emb}', variant=vars(args))
+
+    # ablation usage
+    # no lr decay for med-expert
+    experiment(f'Ablation-DTD-{batch}-10kwarm-{lr}-lr-prenorm3layerencoders-{ norm_prefix }ln-postnorm', variant=vars(args))
+
+    # 
+    # experiment(f'ReRun-DTD-{batch}-10kwarm-{lr}-lr-withdecay', variant=vars(args))

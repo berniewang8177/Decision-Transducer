@@ -71,6 +71,57 @@ class Trainer:
                 print(f'{k}: {v}')
 
         return logs, plot_dict
+    
+    def train_iteration_goal(self, num_steps, iter_num=0, plot_dict=dict(), print_logs=False):
+
+        train_losses = []
+        logs = dict()
+
+        train_start = time.time()
+
+        if num_steps > 0:
+            self.model.train()
+            times = 5
+            for _ in range(num_steps):
+                if _ % int(num_steps / times) == 0:
+                    print("step:", _)
+                train_loss = self.train_step_goal()
+                train_losses.append(train_loss)
+                if self.scheduler is not None:
+                    self.scheduler.step()
+
+
+            logs['time/training'] = time.time() - train_start
+
+        eval_start = time.time()
+
+        self.model.eval()
+        # get the mean return of this Iteration
+        plot_dict['mean_return'] = []
+        for eval_fn in self.eval_fns: # self.eval_fns gives results for each target Rtg
+            outputs = eval_fn(self.model)
+            plot_dict['mean_return'].append(outputs[ list(outputs.keys())[0]])
+            for k, v in outputs.items():
+                logs[f'evaluation/{k}'] = v
+
+        logs['time/total'] = time.time() - self.start_time
+        logs['time/evaluation'] = time.time() - eval_start
+
+        if num_steps > 0:
+            plot_dict['mean_loss'] = np.mean(train_losses)
+            logs['training/train_loss_mean'] = np.mean(train_losses)
+            logs['training/train_loss_std'] = np.std(train_losses)
+
+        for k in self.diagnostics:
+            logs[k] = self.diagnostics[k]
+
+        if print_logs:
+            print('=' * 80)
+            print(f'Iteration {iter_num}')
+            for k, v in logs.items():
+                print(f'{k}: {v}')
+
+        return logs, plot_dict
 
     def train_step(self):
         states, actions, rewards, dones, attention_mask, returns = self.get_batch(self.batch_size)

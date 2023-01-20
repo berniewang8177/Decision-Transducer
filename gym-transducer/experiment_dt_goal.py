@@ -10,14 +10,14 @@ import pickle
 import random
 import sys
 
-from decision_transformer.evaluation.evaluate_episodes import evaluate_episode, evaluate_episode_rtg
+from decision_transformer.evaluation.evaluate_episodes import evaluate_episode, evaluate_episode_goal
 from decision_transformer.models.decision_transformer import DecisionTransformer
 from decision_transformer.models.mlp_bc import MLPBCModel
 
 from decision_transformer.training.act_trainer import ActTrainer
 from decision_transformer.training.seq_trainer import SequenceTrainer
 
-from utils import set_seed
+from utils import set_seed, load_critic, value_state, scale_value
 
 import os
 
@@ -61,59 +61,29 @@ def experiment(
     train_seed = variant['seed']
     exp_prefix = f'{group_name}-train-seed-{train_seed}-{random.randint(int(1e5), int(1e6) - 1)}'
 
-    if env_name == 'hopper':
-        env = gym.make('Hopper-v3')
-        max_ep_len = 1000
-        # env_targets = [3600, 1800]  
-        # env_targets = [3000, 2400, 1200, 600]
-        env_targets = [6000, 4500,] #  3600, 2400, 1200, 600
-        scale = 1000.  # normalization for rewards/returns
-    elif env_name == 'halfcheetah':
-        env = gym.make('HalfCheetah-v3')
-        max_ep_len = 1000
-        env_targets = [12000, 6000]
-        # env_targets = [10000, 8000, 4000, 2000]
-        scale = 1000.
-    elif env_name == 'walker2d':
-        env = gym.make('Walker2d-v3')
-        max_ep_len = 1000
-        # env_targets = [5000, 2500]
-        # env_targets = [4000, 3000, 2000, 1000]
-        env_targets = [9000, 7000]
-        scale = 1000.
-    elif env_name == 'maze2d-umaze':
+    if  env_name == 'antmaze-medium-play':
         import d4rl
-        env = gym.make('maze2d-umaze-v1')
+        env = gym.make('antmaze-medium-play-v2')
         max_ep_len = 1000
-        env_targets = [1.0, 0.5] # enforcing binary # [53, 6.5]
-        scale = 1000.
-    elif env_name == 'maze2d-umaze-dense':
+        scale = 100. # according to critic evaluation (value range from -90 ~ 15)
+    elif  env_name == 'antmaze-medium-diverse':
         import d4rl
-        env = gym.make('maze2d-umaze-dense-v1')
+        env = gym.make('antmaze-medium-diverse-v2')
         max_ep_len = 1000
-        env_targets = [67, 17]
-        scale = 1000.
+        scale = 100. # according to critic evaluation (value range from -90 ~ 15)
     elif env_name == 'antmaze-umaze':
         import d4rl
         env = gym.make('antmaze-umaze-v2')
         max_ep_len = 1000
-        env_targets = [1, 0.86] # [10, 5]
-        scale = 1000.
-    elif env_name == 'antmaze-medium-play':
+        scale = 100. # according to critic evaluation (value range from -90 ~ 15)
+    elif env_name == 'antmaze-umaze-diverse':
         import d4rl
-        env = gym.make('antmaze-medium-play-v2')
+        env = gym.make('antmaze-umaze-diverse-v2')
         max_ep_len = 1000
-        env_targets = [1, 0.9]
-        scale = 1000.
-    elif env_name == 'reacher2d':
-        from decision_transformer.envs.reacher_2d import Reacher2dEnv
-        env = Reacher2dEnv()
-        max_ep_len = 100
-        env_targets = [76, 40]
-        scale = 10.
+        scale = 100. # according to critic evaluation (value range from -90 ~ 15)
     else:
         raise NotImplementedError
-
+    critic = load_critic(env_name, device)
     if model_type == 'bc':
         env_targets = env_targets[:1]  # since BC ignores target, no need for different evaluations
 
@@ -121,13 +91,32 @@ def experiment(
     act_dim = env.action_space.shape[0]
 
     # load dataset
-    dataset_path = f'./../../data/{env_name}-{dataset}-v2.pkl'
+    dataset_path = f'./../../data/{env_name}-v2.pkl'
 
+    stats = []
+    # only learn from successful
+    select = []
     with open(dataset_path, 'rb') as f:
         trajectories = pickle.load(f)
         trajecotry_stats(trajectories )
-        # trajecotries is a list.
-        # ach element is a trajecotry dict with keys: observations, next observations, rewards terminals
+        for idx, traj in enumerate( trajectories):  
+            value, stats_temp = value_state(critic, traj['observations'], device)
+            if sum(traj['rewards']) > 0 and len(traj['rewards']) > 1:
+                select.append(idx)
+            #     print(value[-10:])
+            #     print(traj['rewards'][-10:])
+            #     print() 
+            trajectories[idx]['value'] = value
+            stats += stats_temp
+    stats = np.array(stats)
+    stats = stats[ select ]
+    trajectories = [ trajectories[ select_idx ] for select_idx in select ]
+    large, small = max(stats), min(stats)
+    for idx, traj in enumerate( trajectories):  
+        raw_value = traj['value']
+        scaled_value = np.array( [ scale_value(large, small, x) for x in raw_value])
+        trajectories[idx]['value'] = scaled_value
+
     # save all path information into separate lists
     mode = variant.get('mode', 'normal')
     states, traj_lens, returns = [], [], []
@@ -172,7 +161,7 @@ def experiment(
 
     # reweight sampling by using timesteps of each trajectory instead of uniform
     p_sample = traj_lens[sorted_inds] / sum(traj_lens[sorted_inds])
-    print("p_sample:", p_sample)
+    # print("p_sample:", p_sample)
     def get_batch(batch_size=256, max_len=K):
         batch_inds = np.random.choice(
             np.arange(num_trajectories),
@@ -199,18 +188,8 @@ def experiment(
             timesteps.append(np.arange(si, si + s[-1].shape[1]).reshape(1, -1))
             timesteps[-1][timesteps[-1] >= max_ep_len] = max_ep_len-1  # padding cutoff
             # return to go
-            rtg.append(discount_cumsum(traj['rewards'][si:], gamma=1.)[:s[-1].shape[1] + 1].reshape(1, -1, 1))
-            if rtg[-1].shape[1] <= s[-1].shape[1]:
-                rtg[-1] = np.concatenate([rtg[-1], np.zeros((1, 1, 1))], axis=1)
+            rtg.append(traj['value'][si:si + max_len].reshape(1, -1, 1))
 
-            if env_name == 'maze2d-umaze':
-                # make sure it is binary
-                t = np.array( rtg[-1][0] )
-                t[t >= 1] = 1
-                rtg[-1][0] = list(t)
-
-            # print("Rtg of a trajectory:", np.array( rtg[-1][0] ).reshape(1, -1)[0])
-            # print("Rtg first and last:", rtg[-1][0][0], rtg[-1][0][-1]) # batch x 1 x ( length + 1 ) x dim
             # padding and state + reward normalization
             tlen = s[-1].shape[1]
             s[-1] = np.concatenate([np.zeros((1, max_len - tlen, state_dim)), s[-1]], axis=1)
@@ -218,7 +197,7 @@ def experiment(
             a[-1] = np.concatenate([np.ones((1, max_len - tlen, act_dim)) * -10., a[-1]], axis=1)
             r[-1] = np.concatenate([np.zeros((1, max_len - tlen, 1)), r[-1]], axis=1)
             d[-1] = np.concatenate([np.ones((1, max_len - tlen)) * 2, d[-1]], axis=1)
-            rtg[-1] = np.concatenate([np.zeros((1, max_len - tlen, 1)), rtg[-1]], axis=1) / scale
+            rtg[-1] = np.concatenate([np.zeros((1, max_len - tlen, 1)), rtg[-1]], axis=1) #  / scale
             timesteps[-1] = np.concatenate([np.zeros((1, max_len - tlen)), timesteps[-1]], axis=1)
             # assert 
             mask.append(np.concatenate([np.zeros((1, max_len - tlen)), np.ones((1, tlen))], axis=1))
@@ -240,7 +219,7 @@ def experiment(
             for _ in range(num_eval_episodes):
                 with torch.no_grad():
                     if model_type == 'dt':
-                        ret, length = evaluate_episode_rtg(
+                        ret, length = evaluate_episode_goal(
                             env,
                             state_dim,
                             act_dim,
@@ -252,7 +231,9 @@ def experiment(
                             state_mean=state_mean,
                             state_std=state_std,
                             device=device,
-                            seed = _ # using 0,1,2 as seeds
+                            seed = _ ,# using 0,1,2 as seeds
+                            critic = critic,
+                            value_stats = [large, small]
                         )
                     else:
                         ret, length = evaluate_episode(
@@ -335,7 +316,7 @@ def experiment(
             get_batch=get_batch, # function to process each trajectory from a batch
             scheduler=scheduler,
             loss_fn=lambda s_hat, a_hat, r_hat, s, a, r: torch.mean((a_hat - a)**2),
-            eval_fns=[eval_episodes(tar) for tar in env_targets],
+            eval_fns=[eval_episodes(tar) for tar in [1.0]],
         )
     else:
         trainer = ActTrainer(
@@ -352,21 +333,21 @@ def experiment(
         wandb.init(
             name=exp_prefix,
             group=group_name,
-            project=f'dt-large-basesline-{env_name}-{dataset}',
+            project= f'dt-large-basesline-{env_name}-{dataset}' if 'antmaze' not in env_name else f'dt-large-basesline-{env_name}',
             config=variant
         )
 
     plotting = []
     # tracking the best model of each target Rtg so far
     best_rtgs = [0,0]
-    model_target0 = f"best_model_of_{env_targets[0]}"
-    model_target1 = f"best_model_of_{env_targets[1]}"
-    model_targets = [model_target0, model_target1]
+    # model_target0 = f"best_model_of_{env_targets[0]}"
+    # model_target1 = f"best_model_of_{env_targets[1]}"
+    # model_targets = [model_target0, model_target1]
     for iter in range(variant['max_iters']):
         print("\tIteration:", iter)
         plot = {}
         # logs, plot = trainer.train_iteration(num_steps=variant['num_steps_per_iter'], iter_num=iter+1, plot_dict = plot, print_logs=True)
-        logs, plot = trainer.train_iteration(num_steps=variant['num_steps_per_iter'], iter_num=iter+1, plot_dict = plot, print_logs=True)
+        logs, plot = trainer.train_iteration_goal(num_steps=variant['num_steps_per_iter'], iter_num=iter+1, plot_dict = plot, print_logs=True)
         if log_to_wandb:
             wandb.log(logs)
         # for i,rtg in enumerate(plot['mean_return']):
@@ -388,15 +369,15 @@ if __name__ == '__main__':
     parser.add_argument('--pct_traj', type=float, default=1.)
     parser.add_argument('--batch_size', type=int, default=256)
     parser.add_argument('--model_type', type=str, default='dt')  # dt for decision transformer, bc for behavior cloning
-    parser.add_argument('--embed_dim', type=int, default=128)
+    parser.add_argument('--embed_dim', type=int, default=213)
     parser.add_argument('--n_layer', type=int, default=4)
-    parser.add_argument('--n_head', type=int, default=1)
+    parser.add_argument('--n_head', type=int, default=3)
     parser.add_argument('--activation_function', type=str, default='relu')
     parser.add_argument('--dropout', type=float, default=0.1)
     parser.add_argument('--learning_rate', '-lr', type=float, default=1e-4)
     parser.add_argument('--weight_decay', '-wd', type=float, default=1e-4)
     parser.add_argument('--warmup_steps', type=int, default=10000)
-    parser.add_argument('--num_eval_episodes', type=int, default=100)
+    parser.add_argument('--num_eval_episodes', type=int, default=10)
     parser.add_argument('--max_iters', type=int, default=100)
     parser.add_argument('--num_steps_per_iter', type=int, default=250)
     parser.add_argument('--device', type=str, default='cpu')
@@ -410,4 +391,4 @@ if __name__ == '__main__':
     seed = vars(args)['seed']
     set_seed(seed)
     batch = vars(args)['batch_size']
-    experiment(f'gym-dt-baseline-{batch}', variant=vars(args))
+    experiment(f'gym-dt-V-baseline-{batch}', variant=vars(args))

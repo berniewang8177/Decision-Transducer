@@ -68,7 +68,10 @@ def experiment(
         import d4rl
         env = gym.make('antmaze-umaze-v2')
         max_ep_len = 1000
-
+    elif env_name == 'antmaze-umaze-diverse':
+        import d4rl
+        env = gym.make('antmaze-umaze-diverse-v2')
+        max_ep_len = 1000
     elif env_name == 'antmaze-medium-play':
         import d4rl
         env = gym.make('antmaze-medium-play-v2')

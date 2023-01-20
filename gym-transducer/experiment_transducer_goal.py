@@ -58,7 +58,7 @@ def experiment(
     norm_mode = variant['norm_mode']
     c_mode = variant['comb']
     
-    group_name = f'{exp_prefix}-{env_name}-{dataset}' + f'-{bias_mode}-{norm_mode}'
+    group_name = f'{exp_prefix}-{env_name}-{dataset}' + f'-bias-{bias_mode}-{norm_mode}'
     if bias_mode != 'b0':
         group_name += f'-{c_mode}'
     train_seed = variant['seed']
@@ -67,6 +67,21 @@ def experiment(
     if  env_name == 'antmaze-medium-play':
         import d4rl
         env = gym.make('antmaze-medium-play-v2')
+        max_ep_len = 1000
+        scale = 100. # according to critic evaluation (value range from -90 ~ 15)
+    elif  env_name == 'antmaze-medium-diverse':
+        import d4rl
+        env = gym.make('antmaze-medium-diverse-v2')
+        max_ep_len = 1000
+        scale = 100. # according to critic evaluation (value range from -90 ~ 15)
+    elif env_name == 'antmaze-umaze':
+        import d4rl
+        env = gym.make('antmaze-umaze-v2')
+        max_ep_len = 1000
+        scale = 100. # according to critic evaluation (value range from -90 ~ 15)
+    elif env_name == 'antmaze-umaze-diverse':
+        import d4rl
+        env = gym.make('antmaze-umaze-diverse-v2')
         max_ep_len = 1000
         scale = 100. # according to critic evaluation (value range from -90 ~ 15)
     else:
@@ -346,14 +361,14 @@ if __name__ == '__main__':
     parser.add_argument('--learning_rate', '-lr', type=float, default=1e-4)
     parser.add_argument('--weight_decay', '-wd', type=float, default=1e-4)
     parser.add_argument('--warmup_steps', type=int, default= 10000)
-    parser.add_argument('--num_eval_episodes', type=int, default=3)
+    parser.add_argument('--num_eval_episodes', type=int, default=10)
     parser.add_argument('--max_iters', type=int, default=100)
     parser.add_argument('--num_steps_per_iter', type=int, default=250)
     parser.add_argument('--device', type=str, default='cpu')
     parser.add_argument('--load_model', type=str, default='NO')
     parser.add_argument('--save_model', type=str, default='NO')
 
-    parser.add_argument('--bias', type=str, default="b2")
+    parser.add_argument('--bias', type=str, default="all")
     parser.add_argument('--comb', type=str, default="c22")
     parser.add_argument('--norm_mode', type=str, default="n3")
     parser.add_argument('--modality_emb', type=int, default= 3)
