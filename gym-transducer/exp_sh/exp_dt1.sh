@@ -17,5 +17,8 @@ cd ./..
 # python3 experiment_transducer.py --env halfcheetah --dataset medium-replay --device cuda:1 --seed 1 --learning_rate 1.0e-4 --batch_size 256 --log_to_wandb True
 # python3 experiment_transducer.py --env halfcheetah --dataset medium-replay --device cuda:1 --seed 1 --learning_rate 1.0e-4 --batch_size 128 --log_to_wandb True
 
-python3 experiment_transducer.py --env walker2d --dataset medium --device cuda:1 --seed 1 --learning_rate 1.0e-4 --batch_size 128 --log_to_wandb True
-python3 experiment_transducer.py --env walker2d --dataset medium --device cuda:1 --seed 1 --learning_rate 1.0e-4 --batch_size 64 --log_to_wandb True
+# python3 experiment_transducer.py --env walker2d --dataset medium --device cuda:1 --seed 1 --learning_rate 1.0e-4 --batch_size 128 --log_to_wandb True
+# python3 experiment_transducer.py --env walker2d --dataset medium --device cuda:1 --seed 1 --learning_rate 1.0e-4 --batch_size 64 --log_to_wandb True
+
+python3 experiment_transducer.py --env halfcheetah --dataset medium --seed 0 --device cuda:1 --log_to_wandb True
+python3 experiment_transducer.py --env halfcheetah --dataset medium --seed 1 --device cuda:1 --log_to_wandb True
